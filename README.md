@@ -10,6 +10,7 @@ A visually stunning and interactive portfolio website built with Next.js, featur
 - **Project Showcase**: Beautiful project cards with live demo and code links
 - **Skills Visualization**: Categorized skill cards with icons and interactive elements
 - **Contact Form**: Functional contact form with validation and email integration
+- **Resume Download**: One-click resume download functionality
 - **Performance Optimized**: Fast loading times and smooth animations
 - **SEO Ready**: Properly structured for search engine optimization
 
@@ -86,13 +87,13 @@ portfolio/
 │   ├── layout.js         # Root layout component
 │   ├── page.js           # Home page
 │   └── globals.css       # Global styles
-├── public/               # Public assets
+├── public/               # Public assets (including resume PDF)
 └── package.json          # Project dependencies
 ```
 
 ## 🧩 Key Components
 
-- **Home Hero Section**: Dynamic header with animated text, code snippet, and floating badges
+- **Home Hero Section**: Dynamic header with animated text, code snippet, resume download button, and floating badges
 - **Skills Section**: Interactive cards showing technical skills by category
 - **Projects Section**: Scrollable project cards with details and links
 - **Experience Section**: Timeline of work history with achievements
@@ -103,10 +104,11 @@ portfolio/
 To personalize this portfolio:
 
 1. Update personal details in `app/page.js`
-2. Modify the skills in `app/skills/page.jsx`
-3. Edit projects in `app/projects/page.js`
-4. Update work experience in `app/experience/page.js`
-5. Customize contact information in `app/contact/page.js`
+2. Replace the resume PDF in the `public` folder
+3. Modify the skills in `app/skills/page.jsx`
+4. Edit projects in `app/projects/page.js`
+5. Update work experience in `app/experience/page.js`
+6. Customize contact information in `app/contact/page.js`
 
 ## 📱 Contact Form Setup
 
@@ -127,3 +129,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - All the open-source libraries that made this project possible
 
 ---
+
+Made with ❤️ by [Tahmid Kabir](https://github.com/TahmidKabir-2019331016)
