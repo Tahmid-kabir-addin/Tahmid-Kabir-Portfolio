@@ -1,5 +1,7 @@
 "use client";
 import { Mail, MapPin, Send } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Contact() {
@@ -152,6 +154,65 @@ export default function Contact() {
                   <div>
                     <h3 className="font-semibold">Location</h3>
                     <p className="text-gray-400">Dhaka, Bangladesh</p>
+                  </div>
+                </div>
+
+                {/* Social Media Links */}
+                <div className="flex items-center space-x-4">
+                  <div className="bg-blue-500/10 p-3 rounded-lg">
+                    <Image
+                      src="/github.png"
+                      alt="GitHub"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">GitHub</h3>
+                    <Link
+                      href="https://github.com/Tahmid-kabir-addin"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-blue-400 transition-colors duration-300 flex items-center gap-2 group"
+                    >
+                      <span>github.com/Tahmid-kabir-addin</span>
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-4">
+                  <div className="bg-blue-500/10 p-3 rounded-lg">
+                    <Image
+                      src="/linkedin.png"
+                      alt="LinkedIn"
+                      width={24}
+                      height={24}
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">LinkedIn</h3>
+                    <Link
+                      href="https://www.linkedin.com/in/tahmid-kabir-44b4671b1/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-blue-400 transition-colors duration-300 flex items-center gap-2 group"
+                    >
+                      <span>linkedin.com/in/tahmidkabir</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </Link>
                   </div>
                 </div>
               </div>
