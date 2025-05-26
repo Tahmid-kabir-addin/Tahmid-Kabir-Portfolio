@@ -1,8 +1,8 @@
 "use client";
 
-import { usePathname, useSearchParams } from "next/navigation";
-import Script from "next/script";
-import { useEffect } from "react";
+import { useEffect, Suspense } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import Script from 'next/script';
 
 // Use environment variables for tracking IDs
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -11,7 +11,7 @@ const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 // const UMAMI_WEBSITE_ID = 'your-website-id';
 // const UMAMI_SCRIPT_URL = 'https://analytics.yourdomain.com/script.js';
 
-export default function AdvancedAnalytics() {
+function AnalyticsContent() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -101,5 +101,14 @@ export default function AdvancedAnalytics() {
         }}
       />
     </>
+  );
+}
+
+// Wrap the component in a Suspense boundary to fix the useSearchParams issue
+export default function AdvancedAnalytics() {
+  return (
+    <Suspense fallback={null}>
+      <AnalyticsContent />
+    </Suspense>
   );
 }
