@@ -57,12 +57,22 @@ export default function IconCloud({
   imageArray,
 }) {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
   const { theme } = useTheme();
 
   useEffect(() => {
     if (iconSlugs.length > 0) {
       // Check if iconSlugs is not empty
-      fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
+      setLoading(true);
+      fetchSimpleIcons({ slugs: iconSlugs })
+        .then((result) => {
+          setData(result);
+          setLoading(false);
+        })
+        .catch(error => {
+          console.error('Error fetching icons:', error);
+          setLoading(false);
+        });
     }
   }, [iconSlugs]);
 
@@ -75,20 +85,29 @@ export default function IconCloud({
   }, [data, theme]);
 
   return (
-    // @ts-ignore
-    <Cloud {...cloudProps}>
-      <>
-        <>{renderedIcons}</>
-        {imageArray &&
-          imageArray.length > 0 &&
-          imageArray.map((image, index) => {
-            return (
-              <a key={index} href="#" onClick={(e) => e.preventDefault()}>
-                <img height="42" width="42" alt="A globe" src={image} />
-              </a>
-            );
-          })}
-      </>
-    </Cloud>
+    <>
+      {loading && (
+        <div className="flex justify-center items-center h-full w-full">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
+        </div>
+      )}
+      {!loading && (
+        // @ts-ignore
+        <Cloud {...cloudProps}>
+          <>
+            <>{renderedIcons}</>
+            {imageArray &&
+              imageArray.length > 0 &&
+              imageArray.map((image, index) => {
+                return (
+                  <a key={index} href="#" onClick={(e) => e.preventDefault()}>
+                    <img height="42" width="42" alt="A globe" src={image} />
+                  </a>
+                );
+              })}
+          </>
+        </Cloud>
+      )}
+    </>
   );
 }

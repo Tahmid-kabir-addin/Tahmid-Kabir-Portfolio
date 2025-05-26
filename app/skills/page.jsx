@@ -2,7 +2,20 @@
 
 import { Badge } from "../components/ui/badge";
 import { Card, CardContent } from "../components/ui/card";
-import IconCloudDemo from "../components/globe";
+import dynamic from 'next/dynamic';
+import { Suspense, useState, useEffect } from 'react';
+
+// Lazy load the globe component
+const IconCloudDemo = dynamic(() => import("../components/globe"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex justify-center items-center h-[300px] w-full">
+      <div className="animate-pulse flex space-x-4">
+        <div className="rounded-full bg-gray-700/50 h-32 w-32"></div>
+      </div>
+    </div>
+  ),
+});
 import { Cloud, Code2, Cpu, Database, Layout, Paintbrush } from "lucide-react";
 import { BsFileEarmarkCode, BsGrid1X2 } from "react-icons/bs";
 import {
@@ -129,13 +142,29 @@ const SkillsSection = () => {
     },
   ];
 
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <>
       <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
 
       <section className="container mx-auto px-4 py-11 relative z-10">
-        <div className="flex justify-center items-center ">
-          <IconCloudDemo />
+        <div className="flex justify-center items-center">
+          {isClient && (
+            <Suspense fallback={
+              <div className="flex justify-center items-center h-[300px] w-full">
+                <div className="animate-pulse flex space-x-4">
+                  <div className="rounded-full bg-gray-700/50 h-32 w-32"></div>
+                </div>
+              </div>
+            }>
+              <IconCloudDemo />
+            </Suspense>
+          )}
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
