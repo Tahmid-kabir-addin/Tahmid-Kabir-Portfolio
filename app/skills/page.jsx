@@ -48,8 +48,8 @@ import {
 import { TbBrandVscode } from "react-icons/tb";
 
 const SkillCard = ({ icon: Icon, title, skills, color }) => (
-  <Card className="group relative overflow-hidden bg-gray-900/80 border-gray-700 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20">
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(100,100,255,0.1)] to-transparent group-hover:via-[rgba(100,100,255,0.2)] animate-shimmer"></div>
+  <Card className="group relative overflow-hidden glass glass-hover border-white/10">
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,212,255,0.1)] to-transparent group-hover:via-[rgba(0,212,255,0.2)] animate-shimmer"></div>
     <CardContent className="p-6 relative z-10">
       <div className="flex items-center gap-4 mb-6">
         <div
@@ -57,7 +57,7 @@ const SkillCard = ({ icon: Icon, title, skills, color }) => (
         >
           <Icon className="w-8 h-8" />
         </div>
-        <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+        <h3 className="text-2xl font-bold gradient-text-primary">
           {title}
         </h3>
       </div>
@@ -66,7 +66,7 @@ const SkillCard = ({ icon: Icon, title, skills, color }) => (
           <Badge
             key={index}
             variant="outline"
-            className="group/badge relative bg-gray-800/50 hover:bg-gray-700/80 text-gray-100 border-gray-600 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
+            className="group/badge relative glass hover:bg-white/10 text-gray-100 border-white/20 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
           >
             <span className="transform group-hover/badge:scale-110 transition-transform duration-300">
               {skill.icon}

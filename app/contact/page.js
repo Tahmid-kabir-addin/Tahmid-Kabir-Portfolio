@@ -1,10 +1,17 @@
 "use client";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, CheckCircle, AlertCircle, Phone } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import EnhancedButton from "../components/ui/enhanced-button";
+import { useScrollReveal } from "../hooks/useScrollReveal";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Contact() {
+  const formRef = useScrollReveal();
+  const contactInfoRef = useScrollReveal({ threshold: 0.3 });
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -77,7 +84,10 @@ export default function Contact() {
       const result = await response.json();
 
       if (response.ok) {
-        setStatus("Message sent successfully!");
+        toast.success("Message sent successfully! I'll get back to you soon.", {
+          duration: 5000,
+          position: 'top-center',
+        });
         setFormData({
           name: "",
           email: "",
@@ -85,10 +95,13 @@ export default function Contact() {
           message: "",
         });
         setErrors({});
+        setStatus(null);
       } else {
+        toast.error(result.message || "There was an error sending your message.");
         setStatus(result.message || "There was an error sending your message.");
       }
     } catch (error) {
+      toast.error("An error occurred. Please try again.");
       setStatus("An error occurred. Please try again.");
       console.error("Error:", error);
     } finally {
@@ -97,23 +110,38 @@ export default function Contact() {
   };
 
   return (
-    <main
-      className="pt-20 lg:pt-[0rem] bg-[#04081A]
- text-white min-h-screen"
-    >
-      <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <div>
-                <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  Get in Touch
-                </h2>
-                <p className="text-gray-300 text-lg">
-                  Have a question or want to work together? Drop us a message!
-                </p>
-              </div>
+    <>
+      <Toaster />
+      <main className="pt-20 lg:pt-[0rem] min-h-screen relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+        </div>
+
+        <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
+          <div className="container mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Contact Info */}
+              <motion.div
+                ref={contactInfoRef}
+                className="space-y-8"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  <h2 className="text-4xl font-bold mb-4 gradient-text-primary">
+                    Get in Touch
+                  </h2>
+                  <p className="text-gray-300 text-lg">
+                    Have a question or want to work together? Drop me a message!
+                  </p>
+                </motion.div>
 
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
