@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import Header from "./components/Header";
+import "./assets/css/index.css";
 import AdvancedAnalytics from "./components/AdvancedAnalytics";
+import Header from "./components/Header";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,13 +16,21 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Tahmid Kabir | Software Engineer",
-  description: "Portfolio of Tahmid Kabir, a Full-Stack Developer specializing in MERN stack and web technologies",
-  keywords: ["software engineer", "full-stack developer", "MERN stack", "web development", "portfolio"],
+  description:
+    "Portfolio of Tahmid Kabir, a Full-Stack Developer specializing in MERN stack and web technologies",
+  keywords: [
+    "software engineer",
+    "full-stack developer",
+    "MERN stack",
+    "web development",
+    "portfolio",
+  ],
   authors: [{ name: "Tahmid Kabir" }],
   creator: "Tahmid Kabir",
   openGraph: {
     title: "Tahmid Kabir | Software Engineer",
-    description: "Portfolio of Tahmid Kabir, a Full-Stack Developer specializing in MERN stack and web technologies",
+    description:
+      "Portfolio of Tahmid Kabir, a Full-Stack Developer specializing in MERN stack and web technologies",
     url: "https://tahmid-kabir.vercel.app",
     siteName: "Tahmid Kabir Portfolio",
     locale: "en_US",
@@ -30,7 +39,8 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Tahmid Kabir | Software Engineer",
-    description: "Portfolio of Tahmid Kabir, a Full-Stack Developer specializing in MERN stack and web technologies",
+    description:
+      "Portfolio of Tahmid Kabir, a Full-Stack Developer specializing in MERN stack and web technologies",
     creator: "@tahmidkabir",
   },
   robots: {
