@@ -7,7 +7,7 @@ const projects = [
   {
     title: "VinylStatus",
     description:
-      "JAMstack-based headless e-commerce platform with advanced UI/UX achieving 95+ Lighthouse scores and sub-2s load times. Features AI-assisted custom product design editor, secure multi-provider auth system, and GDPR-compliant workflows with 30% ROI increase.",
+      "PROBLEM: Traditional e-commerce sites were too slow for the client's design-heavy catalog. SOLUTION: Built a Headless architecture using Next.js 15 and WooCommerce. IMPACT: Achieved 95+ Lighthouse scores, sub-2s load times, and a 30% increase in ROI through better UX and SEO.",
     src: "vinylstatus.png",
     link: "vinylstatus.png",
     color: "#ff6b6b",
@@ -35,7 +35,7 @@ const projects = [
   {
     title: "LinkedLogi",
     description:
-      "Multi-role logistics platform for shippers, providers, and warehouse renters with RFQ workflows, inventory tracking, real-time messaging, and secure payments. Features modular REST APIs, MongoDB aggregation pipelines, and layered security achieving <2s FCP and 95+ Lighthouse scores.",
+      "PROBLEM: Logistics providers needed a centralized platform to manage complex RFQ workflows and inventory. SOLUTION: Developed a multi-tenant SaaS platform with real-time messaging and secure payments. IMPACT: Reduced API response times to 6ms and enabled seamless management for 3 distinct user roles.",
     src: "linkedlogi.png",
     link: "linkedlogi.png",
     color: "#10b981",
@@ -62,7 +62,7 @@ const projects = [
   {
     title: "LWSkart",
     description:
-      "E-commerce platform with 90+ Lighthouse score featuring custom animations, real-time filtering, and SEO-optimized pages. Includes real-time stock management, inventory reservation, JWT authentication, i18n support, and automated PDF invoice generation.",
+      "PROBLEM: Users experienced frustration with slow stock updates and checkout processes. SOLUTION: Implemented real-time stock management and optimistic UI updates. IMPACT: Delivered a sub-second load time experience with instant feedback loops for inventory reservation.",
     src: "lwskart.png",
     link: "lwskart.png",
     color: "#8b5cf6",
@@ -86,7 +86,7 @@ const projects = [
   {
     title: "Pigeonnier",
     description:
-      "Desktop email client application built with Java and JavaFX featuring multi-account access, rich-text email composition, attachment handling, and advanced message operations. Implements MVP design pattern with robust error handling and modern UI/UX.",
+      "PROBLEM: Existing email clients were bloated and slow for basic tasks. SOLUTION: Engineered a lightweight desktop client using JavaFX and MVP pattern. IMPACT: Provided a robust, multi-account email management tool with rich-text composition and attachment support.",
     src: "pigeonnier.jpg",
     link: "pigeonnier.png",
     color: "#3b82f6",
@@ -176,126 +176,122 @@ function Card({
         onHoverEnd={() => setIsHovered(false)}
       >
         {/* Modern split card design */}
-        <div className="w-full flex flex-col md:flex-row bg-zinc-900 rounded-2xl overflow-hidden shadow-xl">
+        <div className="w-full flex flex-col md:flex-row bg-[#0B1120] border border-white/10 rounded-3xl overflow-hidden shadow-2xl hover:shadow-blue-500/10 transition-all duration-500">
           {/* Image section - full width on mobile, 55% on desktop */}
-          <div className="w-full md:w-[55%] h-[250px] md:h-[400px] lg:h-[450px] relative overflow-hidden">
+          <div className="w-full md:w-[55%] h-[250px] md:h-[450px] lg:h-[500px] relative overflow-hidden group/image">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent z-10 opacity-60" />
             <motion.img
               src={url}
               alt={title}
-              className="w-full h-full object-contain bg-black/20"
+              className="w-full h-full object-cover object-top transform transition-transform duration-700 group-hover/image:scale-105"
               initial={{ scale: 1 }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.4 }}
             />
 
             {/* Colored overlay on hover */}
             <motion.div
-              className="absolute inset-0"
-              style={{ backgroundColor: color, mixBlendMode: "overlay" }}
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 0.3 }}
-              transition={{ duration: 0.3 }}
+              className="absolute inset-0 z-20 mix-blend-overlay opacity-0 group-hover/image:opacity-40 transition-opacity duration-500"
+              style={{ backgroundColor: color }}
             />
 
             {/* Project number */}
-            <div className="absolute top-4 left-4 md:top-6 md:left-6 bg-black/50 backdrop-blur-md text-white px-3 py-1 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium">
-              Project {i + 1}
+            <div className="absolute top-6 left-6 z-30 bg-black/40 backdrop-blur-md border border-white/10 text-white px-4 py-2 rounded-full text-sm font-medium tracking-wider">
+              0{i + 1}
             </div>
           </div>
 
           {/* Content section - full width on mobile, 45% on desktop */}
-          <div className="w-full md:w-[45%] p-6 md:p-8 lg:p-10 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3 mb-4 md:mb-6">
+          <div className="w-full md:w-[45%] p-6 md:p-10 flex flex-col justify-between relative">
+            {/* Background gradient blob */}
+            <div 
+              className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[100px] opacity-20 pointer-events-none"
+              style={{ backgroundColor: color }}
+            />
+
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-6">
                 <div
-                  className="w-2 h-2 md:w-3 md:h-3 rounded-full"
-                  style={{ backgroundColor: color }}
+                  className="w-2 h-2 rounded-full animate-pulse"
+                  style={{ backgroundColor: color, boxShadow: `0 0 10px ${color}` }}
                 />
-                <div className="h-[1px] w-12 md:w-20 bg-gray-600" />
+                <div className="h-[1px] w-12 bg-white/20" />
                 {projects[i].featured && (
-                  <span className="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded-full border border-yellow-500/30">
+                  <span className="px-3 py-1 bg-yellow-500/10 text-yellow-400 text-xs font-bold uppercase tracking-wider rounded-full border border-yellow-500/20">
                     Featured
                   </span>
                 )}
               </div>
 
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-4">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
                 {title}
               </h2>
-              <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-4 max-w-md">
+              <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-6 max-w-md">
                 {description}
               </p>
 
               {/* Technologies */}
               {projects[i].technologies && (
-                <div className="mb-4">
-                  <h4 className="text-xs text-gray-500 uppercase tracking-wide mb-2">
-                    Technologies
-                  </h4>
-                  <div className="flex flex-wrap gap-1">
-                    {projects[i].technologies.slice(0, 4).map((tech, idx) => (
+                <div className="mb-8">
+                  <div className="flex flex-wrap gap-2">
+                    {projects[i].technologies.slice(0, 5).map((tech, idx) => (
                       <span
                         key={idx}
-                        className="px-2 py-1 bg-gray-800/50 text-gray-300 text-xs rounded border border-gray-700/50"
+                        className="px-3 py-1.5 bg-white/5 text-gray-300 text-xs font-medium rounded-lg border border-white/10 hover:bg-white/10 transition-colors"
                       >
                         {tech}
                       </span>
                     ))}
-                    {projects[i].technologies.length > 4 && (
-                      <span className="px-2 py-1 text-gray-500 text-xs">
-                        +{projects[i].technologies.length - 4} more
+                    {projects[i].technologies.length > 5 && (
+                      <span className="px-3 py-1.5 text-gray-500 text-xs border border-transparent">
+                        +{projects[i].technologies.length - 5}
                       </span>
                     )}
                   </div>
                 </div>
               )}
 
-              {/* Key Achievement */}
+              {/* Key Achievement - Highlighted */}
               {projects[i].achievements &&
                 projects[i].achievements.length > 0 && (
-                  <div className="mb-4">
-                    <div className="flex items-start gap-2">
-                      <div className="w-1 h-1 rounded-full bg-green-400 mt-2 flex-shrink-0" />
-                      <p className="text-xs text-green-400 leading-relaxed">
-                        {projects[i].achievements[0]}
-                      </p>
+                  <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-white/5 to-transparent border-l-2 border-white/10">
+                    <div className="flex items-start gap-3">
+                      <div className="p-1.5 rounded-full bg-green-500/20 mt-0.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
+                      </div>
+                      <div>
+                        <span className="text-xs text-green-400 font-semibold uppercase tracking-wider block mb-1">Key Impact</span>
+                        <p className="text-sm text-gray-300 leading-relaxed">
+                          {projects[i].achievements[0]}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}
             </div>
 
-            <div className="mt-4 md:mt-auto pt-4">
-              <div className="w-full h-[1px] bg-gray-800 mb-4 md:mb-6" />
-
-              <div className="flex items-center gap-4">
+            <div className="relative z-10 mt-4 md:mt-auto pt-6 border-t border-white/10">
+              <div className="flex items-center gap-6">
                 {/* GitHub Link */}
                 <motion.a
                   href={projects[i].githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2"
-                  whileHover={{ y: -3 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+                  whileHover={{ x: 2 }}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
+                    width="20"
+                    height="20"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke={color}
+                    stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
-                  <span
-                    className="text-xs md:text-sm font-medium"
-                    style={{ color }}
-                  >
-                    Code
-                  </span>
+                  <span className="text-sm font-medium">View Code</span>
                 </motion.a>
 
                 {/* Live Link */}
@@ -303,31 +299,24 @@ function Card({
                   href={projects[i].liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-2"
-                  whileHover={{ y: -3 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  className="group flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black font-bold text-sm hover:scale-105 transition-transform"
+                  whileHover={{ y: -1 }}
                 >
+                  <span>Visit Site</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="22"
-                    height="22"
+                    width="16"
+                    height="16"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke={color}
-                    strokeWidth="2"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
                   </svg>
-                  <span
-                    className="text-xs md:text-sm font-medium"
-                    style={{ color }}
-                  >
-                    Live
-                  </span>
                 </motion.a>
               </div>
             </div>

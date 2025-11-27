@@ -83,14 +83,38 @@ export default function About() {
                   <span className="font-bold text-blue-400">
                     Mir Md. Tahmid Kabir
                   </span>
-                  , a Full-stack Software Engineer with
+                  , a Software Engineer who believes in{" "}
                   <span className="font-bold text-green-400">
-                    {" "}
-                    1+ years of professional experience
-                  </span>{" "}
-                  designing and building secure, scalable web applications using
-                  JavaScript, TypeScript, React, and Next.js.
+                    engineering over just coding
+                  </span>.
+                  With over 1 year of professional experience, I focus on building systems that are not just functional, but also secure, performant, and maintainable.
                 </p>
+              </div>
+
+              {/* Engineering Philosophy - New Section */}
+              <div className="bg-[#0B1120]/50 rounded-xl p-5 border border-white/10">
+                <h4 className="text-white font-semibold mb-3 flex items-center gap-2">
+                  <span className="w-2 h-2 bg-purple-400 rounded-full"></span>
+                  My Engineering Philosophy
+                </h4>
+                <div className="grid gap-3">
+                  <div className="flex items-start gap-3">
+                    <div className="p-1.5 rounded-lg bg-blue-500/10 mt-0.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                    </div>
+                    <p className="text-sm text-gray-300">
+                      <strong className="text-blue-400">Performance First:</strong> I optimize for the user. From 60% load time reductions to sub-second API responses, speed is a feature.
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="p-1.5 rounded-lg bg-green-500/10 mt-0.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
+                    </div>
+                    <p className="text-sm text-gray-300">
+                      <strong className="text-green-400">Security by Design:</strong> I integrate security (OWASP, PCI compliance) from day one, not as an afterthought.
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <div className="bg-gray-800/30 rounded-lg p-5 border-l-4 border-blue-500">
@@ -104,50 +128,48 @@ export default function About() {
                   </span>{" "}
                   (May 2025 - Present)
                   <br />
-                  Collaborating with US-based client teams, developing headless
-                  Next.js and WooCommerce platforms, and implementing secure
-                  payment integrations with Stripe, PayPal, and Klaviyo.
+                  Driving the development of headless e-commerce platforms. I collaborate directly with US clients to translate business requirements into technical solutions, managing the full lifecycle from design to deployment.
                 </p>
               </div>
 
               <div className="space-y-4">
                 <h4 className="text-white font-semibold text-lg">
-                  Specializations & Achievements
+                  Core Competencies
                 </h4>
                 <div className="grid gap-3">
                   <div className="flex items-center gap-3 p-3 bg-gray-800/20 rounded-lg border border-gray-700/30">
                     <span className="w-3 h-3 bg-purple-400 rounded-full flex-shrink-0"></span>
                     <span className="text-gray-300">
                       <span className="text-purple-400 font-semibold">
-                        Payment Systems Integration
+                        Complex Integrations
                       </span>{" "}
-                      - Stripe, PayPal, Klaviyo
+                      - Stripe, PayPal, Klaviyo, WooCommerce
                     </span>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-gray-800/20 rounded-lg border border-gray-700/30">
                     <span className="w-3 h-3 bg-green-400 rounded-full flex-shrink-0"></span>
                     <span className="text-gray-300">
                       <span className="text-green-400 font-semibold">
-                        Authentication Systems
+                        System Architecture
                       </span>{" "}
-                      - JWT, OAuth
+                      - Headless CMS, Microservices, REST/GraphQL
                     </span>
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-gray-800/20 rounded-lg border border-gray-700/30">
                     <span className="w-3 h-3 bg-yellow-400 rounded-full flex-shrink-0"></span>
                     <span className="text-gray-300">
                       <span className="text-yellow-400 font-semibold">
-                        Performance Optimization
+                        Measurable Impact
                       </span>{" "}
                       -
                       <span className="text-blue-400 font-semibold">
                         {" "}
-                        60% improvements
+                        60% faster load times
                       </span>
                       ,
                       <span className="text-purple-400 font-semibold">
                         {" "}
-                        6ms API response
+                        99.9% uptime
                       </span>
                     </span>
                   </div>
@@ -175,10 +197,7 @@ export default function About() {
 
               <blockquote className="border-l-4 border-blue-500 pl-4 bg-gray-800/10 rounded-r-lg p-4">
                 <p className="text-white italic leading-relaxed">
-                  "I believe in writing clean, maintainable code following SOLID
-                  principles. My focus is on security, performance optimization,
-                  and creating scalable solutions that deliver real business
-                  value."
+                  "I don't just write code; I solve business problems with technology. My goal is to build software that is robust, scalable, and delivers real value to users."
                 </p>
 
                 <div className="mt-4 space-y-2">

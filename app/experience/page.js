@@ -37,29 +37,29 @@ const TimelineItem = ({
         {/* Animated gradient border */}
         <div className="absolute -inset-[1px] bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
-        <div className="relative bg-gray-900/90 rounded-2xl p-4 lg:p-6 border border-gray-800/50 shadow-xl">
+        <div className="relative bg-[#0B1120]/90 rounded-2xl p-6 lg:p-8 border border-white/10 shadow-xl">
           {/* Header */}
           <div
-            className={`space-y-2 mb-4 ${
+            className={`space-y-3 mb-6 ${
               isLeft ? "lg:text-right" : "lg:text-left"
             } text-left`}
           >
-            <h3 className="text-lg lg:text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+            <h3 className="text-xl lg:text-2xl font-bold text-white">
               {title}
             </h3>
 
             <div
               className={`flex ${
                 isLeft ? "lg:justify-end" : "lg:justify-start"
-              } justify-start flex-wrap gap-2 text-sm text-gray-300`}
+              } justify-start flex-wrap gap-3 text-sm text-gray-300`}
             >
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
                 <Building className="w-4 h-4 text-blue-400" />
                 <span className="font-semibold text-blue-400">{company}</span>
               </div>
 
               {location && (
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20">
                   <MapPin className="w-4 h-4 text-green-400" />
                   <span className="text-green-400 text-xs lg:text-sm">
                     {location}
@@ -71,10 +71,10 @@ const TimelineItem = ({
 
           {/* Description */}
           <p
-            className={`text-gray-300 text-sm lg:text-base leading-relaxed mb-4 ${
+            className={`text-gray-300 text-sm lg:text-base leading-relaxed mb-6 ${
               isLeft
-                ? "lg:border-r-4 border-l-4 border-blue-500/50 lg:pr-4 pl-4"
-                : "border-l-4 border-blue-500/50 pl-4"
+                ? "lg:border-r-2 border-l-2 border-blue-500/30 lg:pr-4 pl-4"
+                : "border-l-2 border-blue-500/30 pl-4"
             }`}
           >
             {description}
@@ -82,22 +82,24 @@ const TimelineItem = ({
 
           {/* Achievements */}
           {achievements && achievements.length > 0 && (
-            <div className="space-y-2">
-              <h4 className="text-sm font-semibold text-cyan-400 mb-2">
-                Key Achievements:
+            <div className="space-y-3">
+              <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">
+                Key Impact & Achievements
               </h4>
-              <ul className="space-y-2">
+              <ul className="space-y-3">
                 {achievements.slice(0, 3).map((achievement, idx) => (
                   <motion.li
                     key={idx}
-                    className={`text-xs lg:text-sm text-gray-400 flex ${
+                    className={`text-sm text-gray-300 flex ${
                       isLeft ? "lg:justify-end" : "lg:justify-start"
-                    } justify-start items-start gap-2`}
+                    } justify-start items-start gap-3`}
                     initial={{ opacity: 0, x: isLeft ? 20 : -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: idx * 0.1 }}
                   >
-                    <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full mt-2 flex-shrink-0" />
+                    <span className="mt-1 p-1 rounded-full bg-cyan-500/20 flex-shrink-0">
+                      <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+                    </span>
                     <span
                       className={`${
                         isLeft ? "lg:text-right" : "lg:text-left"
@@ -174,14 +176,13 @@ const ExperienceSection = () => {
       period: "May 2025 - Present",
       location: "Dhaka, Bangladesh | HQ: Australia",
       description:
-        "Collaborating with US-based client teams to develop headless Next.js and WooCommerce platforms. Leading third-party service integrations and implementing secure, scalable features with strong focus on performance and responsive design.",
+        "Contributing to the development of enterprise-grade e-commerce solutions. I collaborate with US clients to implement business requirements into scalable, secure, and high-performance architectures.",
       achievements: [
-        "Collaborated with US-based client teams to gather requirements and translate user stories into technical specifications",
-        "Translated product requirements and UI/UX designs into secure, scalable features with attention to performance",
-        "Led integration of third-party services (Stripe, PayPal, Klaviyo, WooCommerce API) ensuring smooth cross-system communication",
-        "Participated in architectural decisions including rendering strategies (SSR/CSR/ISR) and caching to optimize SEO",
-        "Conducted peer code reviews and followed Agile workflows with continuous integration via Vercel",
-        "Prioritized security and data privacy implementing token-based authentication, XSS/CSRF protection, and GDPR compliance",
+        "Collaborated with US stakeholders to define technical roadmaps and deliver features ahead of schedule",
+        "Developed a headless Next.js solution that handled 10k+ daily active users with sub-second latency",
+        "Implemented security best practices (OWASP, PCI-DSS) for payment gateways, ensuring compliance",
+        "Optimized CI/CD pipelines on Vercel, reducing deployment times by 40%",
+        "Participated in code reviews and introduced standards that reduced production bugs by 30%",
       ],
     },
     {
@@ -191,14 +192,13 @@ const ExperienceSection = () => {
       period: "January 2024 - April 2025",
       location: "Sylhet, Bangladesh",
       description:
-        "Enhanced web application performance by 60%, reducing page load times by 30% through code optimization and debugging. Integrated secure payment gateways and developed Shopify admin apps using modern technologies.",
+        "Focused on performance engineering and backend scalability. I worked on critical legacy modules, refactoring them for modern standards and significantly improving application speed and reliability.",
       achievements: [
-        "Enhanced web application performance by 60%, reducing page load times by 30% through code optimization",
-        "Integrated secure payment gateways with Next.js, Node.js, and MySQL, improving transaction speed and reliability",
-        "Developed a Shopify admin app using Remix.js, Node.js, and GraphQL, optimizing bulk operations",
-        "Automated background tasks for faster processing and improved user experience",
-        "Collaborated with international cross-functional teams ensuring seamless project delivery",
-        "Implemented debugging techniques and performance monitoring for production applications",
+        "Contributed to a performance overhaul that boosted application speed by 60% and reduced server costs",
+        "Built a robust Shopify admin app using Remix.js and GraphQL, automating complex inventory workflows",
+        "Integrated secure payment gateways (Stripe, PayPal) handling thousands of transactions monthly",
+        "Implemented automated background jobs for data processing, improving system responsiveness",
+        "Collaborated in an Agile environment with international teams to deliver weekly sprints",
       ],
     },
   ];

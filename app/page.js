@@ -4,9 +4,7 @@ import "prismjs/components/prism-javascript";
 import { useEffect, useState } from "react";
 import "./assets/css/tomorrow.css";
 import PortfolioPage from "./components/About";
-import { FlipWords } from "./components/ui/flip-words";
 import Meteors from "./components/ui/meteors";
-import SparklesText from "./components/ui/sparkles-text";
 
 // Grid Background - Replacing the HexagonBackground
 const GridBackground = () => {
@@ -45,9 +43,9 @@ export default function Hero() {
   const words = [
     "Full-Stack Software Engineer with 1+ years experience",
     "Secure Payment Systems & Authentication Specialist",
-    "Performance Optimization Expert",
-    "Expert Next.js & React Developer",
-    "MERN Stack & RESTful API Architect",
+    "Performance Optimization Enthusiast",
+    "Next.js & React Developer",
+    "MERN Stack & RESTful API Developer",
   ];
 
   const [code] = useState(`
@@ -71,7 +69,7 @@ const profile = {
     achievements: {
         performanceBoost: '60%',
         lighthouseScore: '95+',
-        cgpa: '3.95/4.00',
+        problemsSolved: '600+',
         apiResponseTime: '6ms'
     },
 
@@ -79,7 +77,7 @@ const profile = {
         return (
             this.experience >= 1 &&
             this.achievements.lighthouseScore >= 95 &&
-            this.achievements.cgpa >= 3.9
+            this.achievements.problemsSolved >= 600
         );
     }
 };
@@ -101,6 +99,39 @@ const profile = {
       @keyframes dotPulse {
         0%, 100% { opacity: 0.2; transform: scale(0.8); }
         50% { opacity: 0.5; transform: scale(1.2); }
+      }
+
+      @keyframes draw {
+        from { 
+          stroke-dashoffset: 500;
+          opacity: 0;
+        }
+        to { 
+          stroke-dashoffset: 0;
+          opacity: 0.8;
+        }
+      }
+
+      @keyframes highlight {
+        from { 
+          width: 0; 
+          opacity: 0; 
+        }
+        to { 
+          width: 100%; 
+          opacity: 1; 
+        }
+      }
+
+      .animate-draw {
+        animation: draw 1.5s ease-out forwards;
+        opacity: 0;
+      }
+
+      .animate-highlight {
+        animation: highlight 0.8s ease-out forwards;
+        width: 0;
+        opacity: 0;
       }
     `;
     document.head.appendChild(style);
@@ -137,58 +168,66 @@ const profile = {
             <div className="absolute hidden lg:block lg:top-40 lg:-right-20 w-48 h-48 lg:w-64 lg:h-64 bg-teal-500/10 rounded-full blur-3xl"></div>
 
             {/* Professional Status badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-sm border border-green-500/30 mb-8 animate__animated animate__fadeInDown animate__delay-1s">
-              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-              <span className="text-green-300 text-sm font-medium">
-                🚀 Currently at 79mplus • 1+ Years Experience
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 mb-8 animate__animated animate__fadeInDown animate__delay-1s hover:bg-white/10 transition-colors duration-300">
+              <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.5)]"></div>
+              <span className="text-gray-300 text-sm font-medium">
+                Available for new opportunities
               </span>
             </div>
 
             {/* Name section */}
             <div className="relative mb-8">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                <SparklesText text="Hello" />
-                <span className="relative inline-block">
-                  I&apos;m
-                  <span className="typing-effect gradient-text">
-                    {" "}
-                    Tahmid Kabir
-                  </span>
-                </span>
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight tracking-tight text-white">
+                Building <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">High-Impact</span> & <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">Scalable</span> Solutions
               </h1>
-              <div className="absolute -z-10 top-1/2 -translate-y-1/2 left-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
+              <div className="absolute -z-10 top-1/2 -translate-y-1/2 left-1/4 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px] animate-pulse"></div>
             </div>
 
             {/* Role badge */}
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-gradient-to-r from-blue-500/10 to-teal-500/10 border border-blue-500/20 mb-8 backdrop-blur-sm animate__animated animate__fadeInUp animate__delay-1s">
-              <i className="fas fa-rocket text-blue-400 animate-bounce"></i>
-              <span>
+            {/* <div className="inline-flex items-center gap-3 mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+              <span className="text-xl text-gray-400">I am a</span>
+              <div className="px-4 py-2 rounded-xl bg-blue-500/10 border border-blue-500/20">
                 <FlipWords
-                  className={"text-lg text-blue-400 font-medium"}
+                  className={"text-lg text-blue-400 font-bold"}
                   words={words}
                 />
-              </span>
-            </div>
+              </div>
+            </div> */}
 
             {/* Professional Description */}
             <div className="relative mb-12 max-w-xl">
-              <p className="text-lg sm:text-xl text-gray-300/90 leading-relaxed mb-8">
-                Full-stack Software Engineer with{" "}
-                <span className="text-blue-400 font-semibold">
-                  1+ years of experience
-                </span>{" "}
-                designing and building secure, scalable web applications.
-                Specialized in{" "}
-                <span className="text-green-400 font-semibold">
-                  payment systems integration
+              <p className="text-lg text-gray-400 leading-relaxed mb-8">
+                Software Engineer with a proven track record of{" "}
+                <span className="relative inline-block text-white font-medium px-2">
+                  solving complex problems
+                  <svg className="absolute w-[120%] h-[140%] -top-[20%] -left-[10%] -z-10" viewBox="0 0 200 80" preserveAspectRatio="none">
+                    <path 
+                      d="M10,40 C40,10 160,10 190,40 C200,60 160,75 100,75 C40,75 0,60 10,40" 
+                      fill="none" 
+                      stroke="#3b82f6" 
+                      strokeWidth="3" 
+                      className="opacity-80 animate-draw" 
+                      strokeDasharray="500" 
+                      strokeDashoffset="500" 
+                      strokeLinecap="round"
+                      style={{ animationDelay: "2s" }}
+                    />
+                  </svg>
+                </span>
+                . I build systems that drive business growth, focusing on{" "}
+                <span className="relative inline-block px-1">
+                  <span className="relative z-10 text-cyan-200 font-semibold">performance</span>
+                  <span className="absolute inset-0 bg-cyan-500/20 -skew-y-2 rounded-sm -z-0 animate-highlight" style={{ animationDelay: "3.5s" }}></span>
                 </span>
                 ,{" "}
-                <span className="text-purple-400 font-semibold">
-                  authentication
+                <span className="relative inline-block px-1">
+                  <span className="relative z-10 text-purple-200 font-semibold">security</span>
+                  <span className="absolute inset-0 bg-purple-500/20 skew-y-1 rounded-sm -z-0 animate-highlight" style={{ animationDelay: "4.3s" }}></span>
                 </span>
                 , and{" "}
-                <span className="text-yellow-400 font-semibold">
-                  performance optimization
+                <span className="relative inline-block px-1">
+                  <span className="relative z-10 text-blue-200 font-semibold">user experience</span>
+                  <span className="absolute inset-0 bg-blue-500/20 -skew-y-1 rounded-sm -z-0 animate-highlight" style={{ animationDelay: "5.1s" }}></span>
                 </span>
                 .
               </p>
@@ -196,27 +235,21 @@ const profile = {
 
             {/* Key Metrics - Simplified */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-2xl">
-              <div className="text-center p-4 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:scale-105">
+              <div className="glass-card p-4 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
                 <div className="text-2xl font-bold text-blue-400 mb-1">1+</div>
-                <div className="text-sm text-gray-400">Years Exp</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">Years Exp</div>
               </div>
-              <div className="text-center p-4 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-green-500/50 transition-all duration-300 hover:scale-105">
-                <div className="text-2xl font-bold text-green-400 mb-1">
-                  95+
-                </div>
-                <div className="text-sm text-gray-400">Lighthouse</div>
+              <div className="glass-card p-4 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                <div className="text-2xl font-bold text-green-400 mb-1">95+</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">Lighthouse</div>
               </div>
-              <div className="text-center p-4 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:scale-105">
-                <div className="text-2xl font-bold text-purple-400 mb-1">
-                  3.95
-                </div>
-                <div className="text-sm text-gray-400">CGPA</div>
+              <div className="glass-card p-4 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                <div className="text-2xl font-bold text-purple-400 mb-1">600+</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">Problems Solved</div>
               </div>
-              <div className="text-center p-4 bg-gray-800/30 rounded-xl border border-gray-700/50 hover:border-yellow-500/50 transition-all duration-300 hover:scale-105">
-                <div className="text-2xl font-bold text-yellow-400 mb-1">
-                  60%
-                </div>
-                <div className="text-sm text-gray-400">Performance</div>
+              <div className="glass-card p-4 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                <div className="text-2xl font-bold text-yellow-400 mb-1">60%</div>
+                <div className="text-xs text-gray-400 uppercase tracking-wider">Perf Boost</div>
               </div>
             </div>
 
@@ -228,30 +261,19 @@ const profile = {
                 download="Tahmid_Kabir_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => {
-                  console.log("Resume download clicked");
-                }}
-                className="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-r from-blue-500 to-teal-400 p-0.5 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_2rem_-0.5rem_#60A5FA]"
+                className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:scale-105 transition-all duration-300"
               >
-                <span className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-[11px] bg-gray-900 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-teal-400">
-                  <span className="relative flex items-center justify-center gap-2 text-white font-medium">
-                    <span>Download Resume</span>
-                    <i className="fas fa-download transform transition-all duration-300 group-hover:translate-y-1"></i>
-                  </span>
-                </span>
+                <span>Download Resume</span>
+                <i className="fas fa-download group-hover:translate-y-1 transition-transform duration-300"></i>
               </a>
 
               {/* Contact Button */}
               <a
                 href="/contact"
-                className="group relative inline-flex items-center justify-center gap-3 p-0.5 rounded-xl bg-gradient-to-r from-gray-800 to-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_2rem_-0.5rem_#60A5FA]"
+                className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-white/5 text-white font-medium border border-white/10 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300"
               >
-                <span className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-[11px] bg-gray-900 border border-gray-700/50 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-gray-800 group-hover:to-gray-700">
-                  <span className="relative flex items-center justify-center gap-2 text-gray-300 font-medium group-hover:text-white">
-                    <span>Contact Me</span>
-                    <i className="fas fa-envelope transform transition-all duration-300 group-hover:rotate-12"></i>
-                  </span>
-                </span>
+                <span>Contact Me</span>
+                <i className="fas fa-envelope group-hover:rotate-12 transition-transform duration-300"></i>
               </a>
             </div>
           </div>
