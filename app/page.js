@@ -123,6 +123,42 @@ const profile = {
         }
       }
 
+      @keyframes colorPop {
+        from {
+          color: rgb(156, 163, 175); /* gray-400 */
+        }
+        to {
+          color: currentColor;
+        }
+      }
+
+      @keyframes colorPopCyan {
+        from {
+          color: rgb(156, 163, 175); /* gray-400 */
+        }
+        to {
+          color: rgb(165, 243, 252); /* cyan-200 */
+        }
+      }
+
+      @keyframes colorPopPurple {
+        from {
+          color: rgb(156, 163, 175); /* gray-400 */
+        }
+        to {
+          color: rgb(233, 213, 255); /* purple-200 */
+        }
+      }
+
+      @keyframes colorPopBlue {
+        from {
+          color: rgb(156, 163, 175); /* gray-400 */
+        }
+        to {
+          color: rgb(191, 219, 254); /* blue-200 */
+        }
+      }
+
       .animate-draw {
         animation: draw 1.5s ease-out forwards;
         opacity: 0;
@@ -132,6 +168,21 @@ const profile = {
         animation: highlight 0.8s ease-out forwards;
         width: 0;
         opacity: 0;
+      }
+
+      .animate-color-cyan {
+        animation: colorPopCyan 0.3s ease-out forwards;
+        animation-delay: 4.3s;
+      }
+
+      .animate-color-purple {
+        animation: colorPopPurple 0.3s ease-out forwards;
+        animation-delay: 5.1s;
+      }
+
+      .animate-color-blue {
+        animation: colorPopBlue 0.3s ease-out forwards;
+        animation-delay: 5.9s;
       }
     `;
     document.head.appendChild(style);
@@ -210,23 +261,23 @@ const profile = {
                       strokeDasharray="500" 
                       strokeDashoffset="500" 
                       strokeLinecap="round"
-                      style={{ animationDelay: "2s" }}
+                      style={{ animationDelay: "1s" }}
                     />
                   </svg>
                 </span>
                 . I build systems that drive business growth, focusing on{" "}
                 <span className="relative inline-block px-1">
-                  <span className="relative z-10 text-cyan-200 font-semibold">performance</span>
+                  <span className="relative z-10 font-semibold animate-color-cyan">performance</span>
                   <span className="absolute inset-0 bg-cyan-500/20 -skew-y-2 rounded-sm -z-0 animate-highlight" style={{ animationDelay: "3.5s" }}></span>
                 </span>
                 ,{" "}
                 <span className="relative inline-block px-1">
-                  <span className="relative z-10 text-purple-200 font-semibold">security</span>
+                  <span className="relative z-10 font-semibold animate-color-purple">security</span>
                   <span className="absolute inset-0 bg-purple-500/20 skew-y-1 rounded-sm -z-0 animate-highlight" style={{ animationDelay: "4.3s" }}></span>
                 </span>
                 , and{" "}
                 <span className="relative inline-block px-1">
-                  <span className="relative z-10 text-blue-200 font-semibold">user experience</span>
+                  <span className="relative z-10 font-semibold animate-color-blue">user experience</span>
                   <span className="absolute inset-0 bg-blue-500/20 -skew-y-1 rounded-sm -z-0 animate-highlight" style={{ animationDelay: "5.1s" }}></span>
                 </span>
                 .

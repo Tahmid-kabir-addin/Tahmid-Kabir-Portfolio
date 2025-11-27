@@ -1,75 +1,89 @@
 "use client";
 
-import { Cloud, Code2, Cpu, Database, Layout } from "lucide-react";
-import dynamic from "next/dynamic";
-import { Suspense, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { Cloud, Code2, Database, Layout, Lock } from "lucide-react";
 import { BsFileEarmarkCode, BsGrid1X2 } from "react-icons/bs";
 import {
-  FaAws,
-  FaDocker,
-  FaGitAlt,
-  FaJava,
-  FaNodeJs,
-  FaPython,
-  FaReact,
+    FaAws,
+    FaDocker,
+    FaGitAlt,
+    FaJava,
+    FaNodeJs,
+    FaPython,
+    FaReact,
 } from "react-icons/fa";
 import { MdAnimation } from "react-icons/md";
 import {
-  SiGraphql,
-  SiMongodb,
-  SiNextdotjs,
-  SiPostgresql,
-  SiPrisma,
-  SiRedux,
-  SiTailwindcss,
-  SiTypescript,
-  SiVercel,
+    SiGraphql,
+    SiMongodb,
+    SiNextdotjs,
+    SiPostgresql,
+    SiPrisma,
+    SiRedux,
+    SiTailwindcss,
+    SiTypescript,
+    SiVercel,
 } from "react-icons/si";
-import { Badge } from "../components/ui/badge";
-import { Card, CardContent } from "../components/ui/card";
 
-// Lazy load the globe component
-const IconCloudDemo = dynamic(() => import("../components/globe"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex justify-center items-center h-[300px] w-full">
-      <div className="animate-pulse flex space-x-4">
-        <div className="rounded-full bg-gray-700/50 h-32 w-32"></div>
+const SkillBadge = ({ skill, index }) => (
+  <motion.div
+    initial={{ opacity: 0, scale: 0.8 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true }}
+    transition={{ delay: index * 0.05, duration: 0.3 }}
+    whileHover={{ scale: 1.1, y: -5 }}
+    className="group relative"
+  >
+    <div className="relative px-4 py-3 rounded-xl bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/20">
+      <div className="flex items-center gap-2">
+        <span className="transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
+          {skill.icon}
+        </span>
+        <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors">
+          {skill.name}
+        </span>
       </div>
     </div>
-  ),
-});
+  </motion.div>
+);
 
-const SkillCard = ({ icon: Icon, title, skills, color }) => (
-  <Card className="group relative overflow-hidden bg-gray-900/80 border-gray-700 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20">
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(100,100,255,0.1)] to-transparent group-hover:via-[rgba(100,100,255,0.2)] animate-shimmer"></div>
-    <CardContent className="p-6 relative z-10">
-      <div className="flex items-center gap-4 mb-6">
-        <div
-          className={`p-3 rounded-xl bg-gray-800/50 ${color} group-hover:scale-110 transition-transform duration-300`}
-        >
-          <Icon className="w-8 h-8" />
+const SkillCategory = ({ category, index }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: index * 0.1, duration: 0.5 }}
+    className="group relative"
+  >
+    {/* Glassmorphism card */}
+    <div className="relative overflow-hidden rounded-2xl bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 p-8 hover:border-blue-500/30 transition-all duration-500">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
+      {/* Glow effect */}
+      <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
+
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-6">
+          <div className={`p-3 rounded-xl bg-gradient-to-br ${category.gradient} shadow-lg`}>
+            <category.icon className="w-6 h-6 text-white" />
+          </div>
+          <h3 className="text-xl font-bold text-white">
+            {category.title}
+          </h3>
         </div>
-        <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-          {title}
-        </h3>
+
+        {/* Skills grid */}
+        <div className="flex flex-wrap gap-3">
+          {category.skills.map((skill, idx) => (
+            <SkillBadge key={idx} skill={skill} index={idx} />
+          ))}
+        </div>
       </div>
-      <div className="flex flex-wrap gap-2">
-        {skills.map((skill, index) => (
-          <Badge
-            key={index}
-            variant="outline"
-            className="group/badge relative bg-gray-800/50 hover:bg-gray-700/80 text-gray-100 border-gray-600 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
-          >
-            <span className="transform group-hover/badge:scale-110 transition-transform duration-300">
-              {skill.icon}
-            </span>
-            <span className="font-medium">{skill.name}</span>
-          </Badge>
-        ))}
-      </div>
-    </CardContent>
-  </Card>
+    </div>
+  </motion.div>
 );
 
 const SkillsSection = () => {
@@ -77,7 +91,7 @@ const SkillsSection = () => {
     {
       icon: Code2,
       title: "Programming & Design Patterns",
-      color: "text-blue-400",
+      gradient: "from-blue-500 to-cyan-500",
       skills: [
         {
           name: "JavaScript",
@@ -109,7 +123,7 @@ const SkillsSection = () => {
     {
       icon: Layout,
       title: "Frontend Development",
-      color: "text-purple-400",
+      gradient: "from-purple-500 to-pink-500",
       skills: [
         {
           name: "React.js",
@@ -121,14 +135,14 @@ const SkillsSection = () => {
         },
         {
           name: "Remix.js",
-          icon: <BsFileEarmarkCode className="w-4 h-4 text-[#000000]" />,
+          icon: <BsFileEarmarkCode className="w-4 h-4 text-white" />,
         },
         {
           name: "TailwindCSS",
           icon: <SiTailwindcss className="w-4 h-4 text-[#38B2AC]" />,
         },
         {
-          name: "Framer-Motion",
+          name: "Framer Motion",
           icon: <MdAnimation className="w-4 h-4 text-[#FF4081]" />,
         },
         {
@@ -140,7 +154,7 @@ const SkillsSection = () => {
     {
       icon: Database,
       title: "Backend Development",
-      color: "text-green-400",
+      gradient: "from-green-500 to-emerald-500",
       skills: [
         {
           name: "Node.js",
@@ -148,7 +162,7 @@ const SkillsSection = () => {
         },
         {
           name: "Express.js",
-          icon: <BsFileEarmarkCode className="w-4 h-4 text-[#000000]" />,
+          icon: <BsFileEarmarkCode className="w-4 h-4 text-white" />,
         },
         {
           name: "FastAPI",
@@ -171,7 +185,7 @@ const SkillsSection = () => {
     {
       icon: Database,
       title: "Databases & ORM",
-      color: "text-orange-400",
+      gradient: "from-orange-500 to-red-500",
       skills: [
         {
           name: "MySQL",
@@ -191,14 +205,14 @@ const SkillsSection = () => {
         },
         {
           name: "Prisma",
-          icon: <SiPrisma className="w-4 h-4 text-[#2D3748]" />,
+          icon: <SiPrisma className="w-4 h-4 text-white" />,
         },
       ],
     },
     {
-      icon: Cpu,
+      icon: Lock,
       title: "Payment & Authentication",
-      color: "text-yellow-400",
+      gradient: "from-yellow-500 to-amber-500",
       skills: [
         {
           name: "Stripe",
@@ -216,7 +230,7 @@ const SkillsSection = () => {
           name: "SSLCommerz",
           icon: <BsFileEarmarkCode className="w-4 h-4 text-[#FF6B35]" />,
         },
-        { name: "JWT", icon: <BsGrid1X2 className="w-4 h-4 text-[#000000]" /> },
+        { name: "JWT", icon: <BsGrid1X2 className="w-4 h-4 text-white" /> },
         {
           name: "OAuth",
           icon: <BsGrid1X2 className="w-4 h-4 text-[#4285F4]" />,
@@ -234,7 +248,7 @@ const SkillsSection = () => {
     {
       icon: Cloud,
       title: "Tools & Technologies",
-      color: "text-pink-400",
+      gradient: "from-pink-500 to-rose-500",
       skills: [
         {
           name: "Git & GitHub",
@@ -258,71 +272,41 @@ const SkillsSection = () => {
     },
   ];
 
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   return (
-    <>
-      <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none"></div>
+    <div className="min-h-screen bg-[#04081A] relative overflow-hidden pt-24 pb-20">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.1)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_70%,transparent_100%)]" />
+      
+      {/* Gradient orbs */}
+      <div className="absolute top-20 left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
-      <section className="container mx-auto px-4 py-11 relative z-10">
-        <div className="flex justify-center items-center">
-          {isClient && (
-            <Suspense
-              fallback={
-                <div className="flex justify-center items-center h-[300px] w-full">
-                  <div className="animate-pulse flex space-x-4">
-                    <div className="rounded-full bg-gray-700/50 h-32 w-32"></div>
-                  </div>
-                </div>
-              }
-            >
-              <IconCloudDemo />
-            </Suspense>
-          )}
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <section className="container mx-auto px-4 relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-5xl md:text-6xl font-bold mb-4">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+              Technical Skills
+            </span>
+          </h1>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            A comprehensive toolkit for building modern, scalable applications
+          </p>
+        </motion.div>
+
+        {/* Skills grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {skillCategories.map((category, index) => (
-            <SkillCard
-              key={index}
-              icon={category.icon}
-              title={category.title}
-              skills={category.skills}
-              color={category.color}
-            />
+            <SkillCategory key={index} category={category} index={index} />
           ))}
         </div>
       </section>
-      <style jsx>{`
-        @keyframes shimmer {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(100%);
-          }
-        }
-        .animate-shimmer {
-          animation: shimmer 2s infinite;
-        }
-        .bg-grid-pattern {
-          background-image: linear-gradient(
-              to right,
-              rgba(100, 100, 255, 0.1) 1px,
-              transparent 1px
-            ),
-            linear-gradient(
-              to bottom,
-              rgba(100, 100, 255, 0.1) 1px,
-              transparent 1px
-            );
-          background-size: 40px 40px;
-        }
-      `}</style>
-    </>
+    </div>
   );
 };
 
