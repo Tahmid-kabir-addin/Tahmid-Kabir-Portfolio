@@ -157,11 +157,11 @@ export default function Contact() {
           >
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-center lg:text-left">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                Let's Connect
+                Let&apos;s Connect
               </span>
             </h1>
             <p className="text-gray-400 text-base md:text-lg mb-8 md:mb-12 leading-relaxed max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
-              Have a project in mind or just want to chat? I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+              Have a project in mind or just want to chat? I&apos;m always open to discussing new projects, creative ideas or opportunities to be part of your visions.
             </p>
 
             <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
