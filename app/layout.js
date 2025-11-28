@@ -1,6 +1,8 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./assets/css/index.css";
 import AdvancedAnalytics from "./components/AdvancedAnalytics";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./globals.css";
 
@@ -108,7 +110,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://tahmid-kabir-portfolio.vercel.app"),
+  metadataBase: new URL("https://tahmid-kabir.vercel.app"),
   alternates: {
     canonical: "/",
   },
@@ -116,7 +118,7 @@ export const metadata = {
     title: "Tahmid Kabir | Full-Stack Software Engineer",
     description:
       "Building high-impact & scalable solutions. Specialized in Next.js, React, payment systems, and performance optimization. 95+ Lighthouse scores, 1+ years experience.",
-    url: "https://tahmid-kabir-portfolio.vercel.app",
+    url: "https://tahmid-kabir.vercel.app",
     siteName: "Tahmid Kabir Portfolio",
     images: [
       {
@@ -164,6 +166,8 @@ export default function RootLayout({ children }) {
       >
         <Header />
         <main className="min-h-screen bg-gray-900 text-white">{children}</main>
+        <Footer />
+        <Analytics />
       </body>
     </html>
   );

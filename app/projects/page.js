@@ -1,337 +1,275 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ReactLenis } from "lenis/react";
-import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, ExternalLink, Github, Star } from "lucide-react";
+import Image from "next/image";
 
 const projects = [
   {
-    title: "VinylStatus",
+    title: "Vinyl Status",
+    category: "E-Commerce",
     description:
-      "PROBLEM: Traditional e-commerce sites were too slow for the client's design-heavy catalog. SOLUTION: Built a Headless architecture using Next.js 15 and WooCommerce. IMPACT: Achieved 95+ Lighthouse scores, sub-2s load times, and a 30% increase in ROI through better UX and SEO.",
-    src: "vinylstatus.png",
-    link: "vinylstatus.png",
-    color: "#ff6b6b",
-    // githubLink: "#", // Private repository
-    liveLink: "https://vinylstatus.com",
-    featured: true,
-    technologies: [
+      "High-performance headless e-commerce platform built for speed and conversion. Solved slow catalog loading issues by implementing a modern Next.js architecture.",
+    image: "/vs.png",
+    color: "from-emerald-500 to-teal-500",
+    tech: [
       "Next.js 15",
-      "React 18",
-      "Redux Toolkit",
-      "TailwindCSS",
-      "WooCommerce API",
+      "NextAuth",
+      "Redux",
+      "WooCommerce",
       "Stripe",
-      "PayPal",
-      "Afterpay",
+      "Paypal",
+      "AfterPay",
     ],
-    achievements: [
-      "95+ Lighthouse scores with sub-2s load times",
-      "40% signup efficiency improvement with NextAuth.js",
-      "99% payment success rate with secure PCI-compliant processing",
-      "60% reduction in product mock design time with AI-assisted editor",
-      "30% increase in ROI with GDPR-compliant marketing automation",
+    stats: [
+      "95+ Lighthouse",
+      "Great Core Web Vitals",
+      "30% ROI Increase",
+      "Headless CMS",
+      "SEO Optimized",
     ],
+    links: {
+      live: "https://vinylstatus.com",
+      github: null,
+    },
+    featured: true,
   },
   {
     title: "LinkedLogi",
+    category: "SaaS Platform",
     description:
-      "PROBLEM: Logistics providers needed a centralized platform to manage complex RFQ workflows and inventory. SOLUTION: Developed a multi-tenant SaaS platform with real-time messaging and secure payments. IMPACT: Reduced API response times to 6ms and enabled seamless management for 3 distinct user roles.",
-    src: "linkedlogi.png",
-    link: "linkedlogi.png",
-    color: "#10b981",
-    // githubLink: "#", // Private repository
-    liveLink: "https://linkedlogi.com",
-    technologies: [
-      "Next.js 14",
-      "React 18",
-      "TypeScript",
-      "TailwindCSS",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "AWS",
-    ],
-    achievements: [
-      "20+ responsive pages with 30+ reusable components",
-      "6ms API response times with 99.9% success rate",
-      "95+ Lighthouse score with <2s FCP performance",
-      "Secure multi-tenant backend with JWT authentication",
-      "MongoDB aggregation pipelines for complex queries",
-    ],
+      "Multi-tenant logistics management system handling complex RFQ workflows. Streamlined operations for 3 distinct user roles with real-time updates.",
+    image: "/linkedlogi.png",
+    color: "from-emerald-500 to-teal-500",
+    tech: ["Next.js 14", "TypeScript", "MongoDB", "AWS"],
+    stats: ["6ms Latency", "99.9% Uptime", "Multi-tenant"],
+    links: {
+      live: "https://linkedlogi.com",
+      github: null,
+    },
+    featured: true,
   },
   {
     title: "LWSkart",
+    category: "E-Commerce",
     description:
-      "PROBLEM: Users experienced frustration with slow stock updates and checkout processes. SOLUTION: Implemented real-time stock management and optimistic UI updates. IMPACT: Delivered a sub-second load time experience with instant feedback loops for inventory reservation.",
-    src: "lwskart.png",
-    link: "lwskart.png",
-    color: "#8b5cf6",
-    githubLink: "https://github.com/Tahmid-kabir-addin/LWSkart",
-    liveLink: "https://lwskart.com",
-    technologies: [
-      "Next.js",
-      "TailwindCSS",
-      "Framer-Motion",
-      "Next-Auth",
-      "MongoDB",
-    ],
-    achievements: [
-      "90+ Lighthouse score with sub-second load times",
-      "Real-time stock management with inventory reservation",
-      "JWT authentication with secure session management",
-      "Internationalization (i18n) support for multiple languages",
-      "Automated PDF invoice generation system",
-    ],
+      "Real-time inventory management system with optimistic UI updates. Eliminated stock conflicts during high-traffic sales events.",
+    image: "/lwskart.png",
+    color: "from-emerald-500 to-teal-500",
+    tech: ["Next.js", "NextAuth", "MongoDB", "i18n"],
+    stats: ["Real-time Sync", "Sub-second UI", "Global i18n"],
+    links: {
+      live: "https://lwskart.com",
+      github: "https://github.com/Tahmid-kabir-addin/LWSkart",
+    },
+    featured: false,
   },
   {
     title: "Pigeonnier",
+    category: "Desktop App",
     description:
-      "PROBLEM: Existing email clients were bloated and slow for basic tasks. SOLUTION: Engineered a lightweight desktop client using JavaFX and MVP pattern. IMPACT: Provided a robust, multi-account email management tool with rich-text composition and attachment support.",
-    src: "pigeonnier.jpg",
-    link: "pigeonnier.png",
-    color: "#3b82f6",
-    githubLink: "https://github.com/TahmidKabir-2019331016/Pigeonnier.git",
-    // liveLink: "#",
-    technologies: ["Java", "JavaFX", "SMTP/IMAP", "MVP Pattern"],
-    achievements: [
-      "Multi-account email management with secure authentication",
-      "Rich-text email composition with attachment support",
-      "Advanced message operations (search, filter, organize)",
-      "MVP design pattern implementation for maintainable code",
-      "Robust error handling and user-friendly interface",
-    ],
+      "Lightweight JavaFX email client designed for efficiency. Implemented MVP pattern for a robust, multi-account email management experience.",
+    image: "/pigeonnier.png",
+    color: "from-emerald-500 to-teal-500",
+    tech: ["Java", "JavaFX", "MVP Pattern", "IMAP/SMTP"],
+    stats: ["Multi-account", "Rich Text", "Secure Auth"],
+    links: {
+      live: null,
+      github: "https://github.com/TahmidKabir-2019331016/Pigeonnier.git",
+    },
+    featured: false,
   },
 ];
 
-export default function Projects1() {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end end"],
-  });
-
+const ProjectCard = ({ project, index }) => {
   return (
-    <ReactLenis root>
-      <main className="bg-black" ref={container}>
-        <section className="text-white w-full bg-slate-950">
-          {projects.map((project, i) => {
-            const targetScale = 1 - (projects.length - i) * 0.05;
-            return (
-              <Card
-                key={`p_${i}`}
-                i={i}
-                url={project.link}
-                src={project.src}
-                title={project.title}
-                color={project.color}
-                description={project.description}
-                progress={scrollYProgress}
-                range={[i * 0.25, 1]}
-                targetScale={targetScale}
-              />
-            );
-          })}
-        </section>
-      </main>
-    </ReactLenis>
-  );
-}
-
-function Card({
-  i,
-  title,
-  description,
-  src,
-  url,
-  color,
-  progress,
-  range,
-  targetScale,
-}) {
-  const container = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start end", "start start"],
-  });
-
-  const scale = useTransform(progress, range, [1, targetScale]);
-
-  return (
-    <div
-      ref={container}
-      className="h-screen flex items-center justify-center sticky top-0"
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group relative"
     >
-      <motion.div
-        style={{
-          scale,
-          top: `calc(-5vh + ${i * 25}px)`,
-        }}
-        className="relative -top-[25%] h-auto w-[90%] md:w-[85%] lg:w-[75%] xl:w-[65%] origin-top"
-        whileHover={{
-          y: -8,
-          transition: { duration: 0.3 },
-        }}
-        onHoverStart={() => setIsHovered(true)}
-        onHoverEnd={() => setIsHovered(false)}
-      >
-        {/* Modern split card design */}
-        <div className="w-full flex flex-col md:flex-row bg-[#0B1120] border border-white/10 rounded-3xl overflow-hidden shadow-2xl hover:shadow-blue-500/10 transition-all duration-500">
-          {/* Image section - full width on mobile, 55% on desktop */}
-          <div className="w-full md:w-[55%] h-[250px] md:h-[450px] lg:h-[500px] relative overflow-hidden group/image">
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent z-10 opacity-60" />
-            <motion.img
-              src={url}
-              alt={title}
-              className="w-full h-full object-cover object-top transform transition-transform duration-700 group-hover/image:scale-105"
-              initial={{ scale: 1 }}
-            />
+      {/* Card Background with Glassmorphism */}
+      <div className="relative h-full bg-[#0B1120]/80 backdrop-blur-xl border border-white/10 rounded-3xl overflow-hidden hover:border-blue-500/30 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-blue-500/10">
+        {/* Image Section */}
+        <div className="relative h-64 overflow-hidden">
+          <div
+            className={`absolute inset-0 bg-gradient-to-t from-[#0B1120] via-transparent to-transparent z-10 opacity-60`}
+          />
+          <div
+            className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-20 mix-blend-overlay`}
+          />
 
-            {/* Colored overlay on hover */}
-            <motion.div
-              className="absolute inset-0 z-20 mix-blend-overlay opacity-0 group-hover/image:opacity-40 transition-opacity duration-500"
-              style={{ backgroundColor: color }}
-            />
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover transform group-hover:scale-110 transition-transform duration-700"
+          />
 
-            {/* Project number */}
-            <div className="absolute top-6 left-6 z-30 bg-black/40 backdrop-blur-md border border-white/10 text-white px-4 py-2 rounded-full text-sm font-medium tracking-wider">
-              0{i + 1}
-            </div>
+          {/* Category Badge */}
+          <div className="absolute top-4 left-4 z-30">
+            <span className="px-3 py-1 text-sm font-bold uppercase tracking-wider text-white bg-black/50 backdrop-blur-md border border-white/10 rounded-full">
+              {project.category}
+            </span>
           </div>
 
-          {/* Content section - full width on mobile, 45% on desktop */}
-          <div className="w-full md:w-[45%] p-6 md:p-10 flex flex-col justify-between relative">
-            {/* Background gradient blob */}
-            <div 
-              className="absolute top-0 right-0 w-64 h-64 rounded-full blur-[100px] opacity-20 pointer-events-none"
-              style={{ backgroundColor: color }}
-            />
-
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-6">
-                <div
-                  className="w-2 h-2 rounded-full animate-pulse"
-                  style={{ backgroundColor: color, boxShadow: `0 0 10px ${color}` }}
-                />
-                <div className="h-[1px] w-12 bg-white/20" />
-                {projects[i].featured && (
-                  <span className="px-3 py-1 bg-yellow-500/10 text-yellow-400 text-xs font-bold uppercase tracking-wider rounded-full border border-yellow-500/20">
-                    Featured
-                  </span>
-                )}
-              </div>
-
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
-                {title}
-              </h2>
-              <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-6 max-w-md">
-                {description}
-              </p>
-
-              {/* Technologies */}
-              {projects[i].technologies && (
-                <div className="mb-8">
-                  <div className="flex flex-wrap gap-2">
-                    {projects[i].technologies.slice(0, 5).map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1.5 bg-white/5 text-gray-300 text-xs font-medium rounded-lg border border-white/10 hover:bg-white/10 transition-colors"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {projects[i].technologies.length > 5 && (
-                      <span className="px-3 py-1.5 text-gray-500 text-xs border border-transparent">
-                        +{projects[i].technologies.length - 5}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {/* Key Achievement - Highlighted */}
-              {projects[i].achievements &&
-                projects[i].achievements.length > 0 && (
-                  <div className="mb-6 p-4 rounded-xl bg-gradient-to-r from-white/5 to-transparent border-l-2 border-white/10">
-                    <div className="flex items-start gap-3">
-                      <div className="p-1.5 rounded-full bg-green-500/20 mt-0.5">
-                        <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
-                      </div>
-                      <div>
-                        <span className="text-xs text-green-400 font-semibold uppercase tracking-wider block mb-1">Key Impact</span>
-                        <p className="text-sm text-gray-300 leading-relaxed">
-                          {projects[i].achievements[0]}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-            </div>
-
-            <div className="relative z-10 mt-4 md:mt-auto pt-6 border-t border-white/10">
-              <div className="flex items-center gap-6">
-                {/* GitHub Link */}
-                <motion.a
-                  href={projects[i].githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-                  whileHover={{ x: 2 }}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                  <span className="text-sm font-medium">View Code</span>
-                </motion.a>
-
-                {/* Live Link */}
-                <motion.a
-                  href={projects[i].liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-2 px-4 py-2 rounded-full bg-white text-black font-bold text-sm hover:scale-105 transition-transform"
-                  whileHover={{ y: -1 }}
-                >
-                  <span>Visit Site</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                    <polyline points="7 7 17 7 17 17"></polyline>
-                  </svg>
-                </motion.a>
-              </div>
-            </div>
+          {/* Links Overlay (Desktop) */}
+          <div className="hidden md:flex absolute inset-0 z-30 items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-sm">
+            {project.links.live && (
+              <a
+                href={project.links.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white text-black rounded-full hover:scale-110 transition-transform"
+                title="View Live Site"
+              >
+                <ExternalLink className="w-6 h-6" />
+              </a>
+            )}
+            {project.links.github && (
+              <a
+                href={project.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-gray-900 text-white border border-white/20 rounded-full hover:scale-110 transition-transform"
+                title="View Source Code"
+              >
+                <Github className="w-6 h-6" />
+              </a>
+            )}
           </div>
         </div>
-      </motion.div>
-      {i < projects.length - 1 && (
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center gap-2">
-          <span className="text-gray-400 text-sm flex items-center gap-2">
-            <i className="fas fa-mouse text-blue-400"></i>
-            Scroll down
-          </span>
-          <i className="fas fa-chevron-down text-blue-400 text-xl"></i>
+
+        {/* Content Section */}
+        <div className="p-6 md:p-8">
+          <div className="flex justify-between items-start mb-4">
+            <h3 className="text-3xl font-bold text-white group-hover:text-blue-400 transition-colors">
+              {project.title}
+            </h3>
+            {project.featured && (
+              <div className="flex items-center gap-1 text-yellow-400 text-xs font-bold uppercase tracking-wider">
+                <Star className="w-4 h-4 fill-yellow-400" />
+                <span>Featured</span>
+              </div>
+            )}
+          </div>
+
+          <p className="text-gray-300 text-base leading-relaxed mb-6 line-clamp-3">
+            {project.description}
+          </p>
+
+          <div className="grid grid-cols-3 gap-3 mb-6">
+            {project.stats.map((stat, i) => (
+              <div
+                key={i}
+                className="text-center p-2 rounded-lg border border-white/10 bg-gray-900/50"
+              >
+                <span
+                  className={`${
+                    project.stats.length > 3 ? "text-xs" : "text-sm"
+                  } font-extrabold bg-gradient-to-r ${
+                    project.color
+                  } bg-clip-text text-transparent block`}
+                >
+                  {stat}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Tech Stack */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.tech.map((t, i) => (
+              <span
+                key={i}
+                className="text-sm text-gray-400 font-medium px-3 py-1 rounded-full bg-gray-800/50 border border-gray-700/50"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+
+          {/* Mobile Links */}
+          <div className="md:hidden flex items-center gap-4 pt-4 border-t border-white/10">
+            {project.links.live && (
+              <a
+                href={project.links.live}
+                className="flex items-center gap-2 text-base text-white font-medium"
+              >
+                <ExternalLink className="w-5 h-5" /> Live Demo
+              </a>
+            )}
+            {project.links.github && (
+              <a
+                href={project.links.github}
+                className="flex items-center gap-2 text-base text-gray-400"
+              >
+                <Github className="w-5 h-5" /> Source
+              </a>
+            )}
+          </div>
         </div>
-      )}
+      </div>
+    </motion.div>
+  );
+};
+
+export default function ProjectsPage() {
+  return (
+    <div className="min-h-screen bg-[#04081A] relative py-20 md:py-32 overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-20 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+              Featured Projects
+            </span>
+          </h1>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            A collection of high-impact solutions built with modern
+            technologies, focusing on performance and user experience.
+          </p>
+        </motion.div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {projects.map((project, index) => (
+            <ProjectCard key={index} project={project} index={index} />
+          ))}
+        </div>
+
+        {/* Github CTA */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="text-center mt-20"
+        >
+          <a
+            href="https://github.com/Tahmid-kabir-addin"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-white font-medium"
+          >
+            <Github className="w-5 h-5" />
+            <span>View More on GitHub</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </motion.div>
+      </div>
     </div>
   );
 }
