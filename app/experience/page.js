@@ -192,9 +192,9 @@ export const metadata = {
     siteName: "Tahmid Kabir Portfolio",
     images: [
       {
-        url: "/Tahmid.jpg",
-        width: 1207,
-        height: 929,
+        url: "/og.png",
+        width: 1200,
+        height: 630,
         alt: "Tahmid Kabir - Software Engineer Professional Experience: 79mplus, InfancyIT, Performance Engineering",
       },
     ],
@@ -206,7 +206,7 @@ export const metadata = {
     title: "Professional Experience | Tahmid Kabir - Software Engineer",
     description: "Software engineering excellence: 79mplus Junior Engineer (10k+ users, 40% optimization), InfancyIT Trainee (60% performance boost). Next.js, Remix.js, GraphQL expertise.",
     creator: "@tahmidkabir",
-    images: ["/Tahmid.jpg"],
+    images: ["/og.png"],
   },
   alternates: {
     canonical: "https://tahmid-kabir-portfolio.vercel.app/experience",

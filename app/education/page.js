@@ -136,9 +136,9 @@ export const metadata = {
     siteName: "Tahmid Kabir Portfolio",
     images: [
       {
-        url: "/Tahmid.jpg",
-        width: 1207,
-        height: 929,
+        url: "/og.png",
+        width: 1200,
+        height: 630,
         alt: "Tahmid Kabir - Computer Science Engineering Student SUST with Outstanding Academic Record",
       },
     ],
@@ -150,7 +150,7 @@ export const metadata = {
     title: "Academic Journey & Education | Tahmid Kabir",
     description: "B.Sc Computer Science & Engineering at SUST (CGPA 3.95/4.00), HSC Notre Dame College (GPA 5.00/5.00). Excellence in algorithms, data structures, and web technologies.",
     creator: "@tahmidkabir",
-    images: ["/Tahmid.jpg"],
+    images: ["/og.png"],
   },
   alternates: {
     canonical: "https://tahmid-kabir-portfolio.vercel.app/education",
