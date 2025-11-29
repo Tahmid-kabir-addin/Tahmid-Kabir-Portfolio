@@ -122,9 +122,9 @@ export const metadata = {
     siteName: "Tahmid Kabir Portfolio",
     images: [
       {
-        url: "/Tahmid.jpg",
-        width: 1207,
-        height: 929,
+        url: "/og.png",
+        width: 1200,
+        height: 630,
         alt: "Tahmid Kabir - Full-Stack Software Engineer",
       },
     ],
@@ -137,7 +137,7 @@ export const metadata = {
     description:
       "Building high-impact & scalable solutions. Specialized in Next.js, React, payment systems, and performance optimization.",
     creator: "@tahmidkabir",
-    images: ["/Tahmid.jpg"],
+    images: ["/og.png"],
   },
   robots: {
     index: true,
