@@ -166,9 +166,9 @@ export const metadata = {
     siteName: "Tahmid Kabir Portfolio",
     images: [
       {
-        url: "/Tahmid.jpg",
-        width: 1207,
-        height: 929,
+        url: "/og.png",
+        width: 1200,
+        height: 630,
         alt: "Contact Tahmid Kabir - Full-Stack Developer Available for Hire in Dhaka Bangladesh",
       },
     ],
@@ -180,7 +180,7 @@ export const metadata = {
     title: "Contact & Hire | Tahmid Kabir - Full-Stack Developer",
     description: "Available for web development projects: Next.js, React, e-commerce, SaaS platforms. Freelance & full-time opportunities. Contact: tahmidkabiraddin@gmail.com | Dhaka, Bangladesh",
     creator: "@tahmidkabir",
-    images: ["/Tahmid.jpg"],
+    images: ["/og.png"],
   },
   alternates: {
     canonical: "https://tahmid-kabir-portfolio.vercel.app/contact",

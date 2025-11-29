@@ -140,9 +140,9 @@ export const metadata = {
     siteName: "Tahmid Kabir Portfolio",
     images: [
       {
-        url: "/Tahmid.jpg",
-        width: 1207,
-        height: 929,
+        url: "/og.png",
+        width: 1200,
+        height: 630,
         alt: "Tahmid Kabir - Technical Skills & Full-Stack Development Expertise",
       },
     ],
@@ -154,7 +154,7 @@ export const metadata = {
     title: "Technical Skills & Expertise | Tahmid Kabir",
     description: "Comprehensive technical skills: React.js, Next.js, Node.js, TypeScript, Python, MongoDB, AWS, payment systems, and modern web development technologies.",
     creator: "@tahmidkabir",
-    images: ["/Tahmid.jpg"],
+    images: ["/og.png"],
   },
   alternates: {
     canonical: "https://tahmid-kabir-portfolio.vercel.app/skills",

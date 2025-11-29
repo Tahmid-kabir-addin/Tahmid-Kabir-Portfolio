@@ -191,9 +191,9 @@ export const metadata = {
     siteName: "Tahmid Kabir Portfolio",
     images: [
       {
-        url: "/Tahmid.jpg",
-        width: 1207,
-        height: 929,
+        url: "/og.png",
+        width: 1200,
+        height: 630,
         alt: "Tahmid Kabir - Full-Stack Developer Projects Portfolio: E-commerce, SaaS, Inventory Management, Desktop Applications",
       },
     ],
@@ -205,7 +205,7 @@ export const metadata = {
     title: "Featured Projects & Portfolio | Tahmid Kabir",
     description: "High-impact projects: Vinyl Status e-commerce (95+ Lighthouse), LinkedLogi SaaS platform (6ms latency), LWSkart inventory system, Pigeonnier email client. Next.js, TypeScript, MongoDB, AWS.",
     creator: "@tahmidkabir",
-    images: ["/Tahmid.jpg"],
+    images: ["/og.png"],
   },
   alternates: {
     canonical: "https://tahmid-kabir-portfolio.vercel.app/projects",
