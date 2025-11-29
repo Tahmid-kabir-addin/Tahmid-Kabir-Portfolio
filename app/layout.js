@@ -151,7 +151,7 @@ export const metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code", // Replace with actual code from Google Search Console
+    google: "2f24b7481b566ce5", // Google Search Console verification
   },
 };
 
