@@ -188,5 +188,79 @@ export const metadata = {
 };
 
 export default function ContactPage() {
-  return <ContactClient />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tahmid Kabir",
+    "jobTitle": "Full-Stack Software Engineer",
+    "description": "Available for web development projects, e-commerce solutions, SaaS platforms. Offering freelance and full-time collaboration opportunities.",
+    "url": "https://tahmid-kabir-portfolio.vercel.app/contact",
+    "email": "tahmidkabiraddin@gmail.com",
+    "telephone": "+880-1638587407",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dhaka",
+      "addressCountry": "Bangladesh"
+    },
+    "sameAs": [
+      "https://github.com/Tahmid-kabir-addin",
+      "https://www.linkedin.com/in/tahmid-kabir-44b4671b1/"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Full-Stack Web Development Services",
+        "description": "Professional web development services including React.js, Next.js, e-commerce platforms, SaaS development, payment integration, and custom software solutions.",
+        "serviceType": [
+          "Web Development",
+          "E-commerce Development", 
+          "SaaS Platform Development",
+          "Payment Integration",
+          "Custom Software Development",
+          "Frontend Development",
+          "Backend Development",
+          "Performance Optimization"
+        ]
+      },
+      "availability": "Available",
+      "availableDeliveryMethod": "Remote"
+    },
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Next.js Development",
+          "description": "Expert Next.js development for high-performance web applications"
+        }
+      },
+      {
+        "@type": "Offer", 
+        "itemOffered": {
+          "@type": "Service",
+          "name": "E-commerce Solutions",
+          "description": "Custom e-commerce platforms with payment gateway integrations"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service", 
+          "name": "SaaS Development",
+          "description": "Scalable SaaS platform development with multi-tenant architecture"
+        }
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ContactClient />
+    </>
+  );
 }

@@ -6,6 +6,156 @@ import "./assets/css/tomorrow.css";
 import PortfolioPage from "./components/About";
 import Meteors from "./components/ui/meteors";
 
+// Structured Data Component for Landing Page
+function StructuredData() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://tahmid-kabir-portfolio.vercel.app/#webpage",
+        "url": "https://tahmid-kabir-portfolio.vercel.app",
+        "name": "Tahmid Kabir | Full-Stack Software Engineer Portfolio",
+        "description": "Welcome to my portfolio. I'm Tahmid Kabir, a passionate Full-Stack Software Engineer building high-impact solutions with Next.js, React, and modern web technologies.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Tahmid Kabir Portfolio",
+          "url": "https://tahmid-kabir-portfolio.vercel.app"
+        },
+        "about": {
+          "@type": "Person",
+          "name": "Tahmid Kabir",
+          "jobTitle": "Full-Stack Software Engineer",
+          "description": "Passionate Software Engineer with 1+ years of experience building high-impact, scalable solutions."
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://tahmid-kabir-portfolio.vercel.app/og.png",
+          "width": 1200,
+          "height": 630
+        },
+        "datePublished": "2024-01-01",
+        "dateModified": new Date().toISOString(),
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://tahmid-kabir-portfolio.vercel.app"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://tahmid-kabir-portfolio.vercel.app/#profilepage",
+        "url": "https://tahmid-kabir-portfolio.vercel.app",
+        "name": "Tahmid Kabir - Professional Profile",
+        "description": "Professional profile showcasing skills, projects, experience, and contact information for Full-Stack Software Engineer Tahmid Kabir.",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Tahmid Kabir",
+          "jobTitle": "Full-Stack Software Engineer",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "79mplus"
+          },
+          "hasCredential": {
+            "@type": "EducationalOccupationalCredential",
+            "name": "Bachelor of Science in Computer Science & Engineering",
+            "educationalLevel": "Bachelor's Degree",
+            "recognizedBy": {
+              "@type": "CollegeOrUniversity", 
+              "name": "Shahjalal University of Science and Technology"
+            }
+          },
+          "knowsLanguage": [
+            {
+              "@type": "Language",
+              "name": "English",
+              "alternateName": "en"
+            },
+            {
+              "@type": "Language", 
+              "name": "Bengali",
+              "alternateName": "bn"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://tahmid-kabir-portfolio.vercel.app/#portfolio-sections",
+        "name": "Portfolio Sections",
+        "description": "Main sections of Tahmid Kabir's portfolio website",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "About",
+            "description": "Introduction and overview of Tahmid Kabir's background and expertise",
+            "url": "https://tahmid-kabir-portfolio.vercel.app/#about"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Skills", 
+            "description": "Technical skills and competencies in programming languages, frameworks, and tools",
+            "url": "https://tahmid-kabir-portfolio.vercel.app/skills"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Projects",
+            "description": "Featured software projects including e-commerce platforms, SaaS solutions, and applications",
+            "url": "https://tahmid-kabir-portfolio.vercel.app/projects"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Experience",
+            "description": "Professional work experience and career achievements",
+            "url": "https://tahmid-kabir-portfolio.vercel.app/experience"
+          },
+          {
+            "@type": "ListItem", 
+            "position": 5,
+            "name": "Education",
+            "description": "Academic background and educational qualifications",
+            "url": "https://tahmid-kabir-portfolio.vercel.app/education"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Contact",
+            "description": "Contact information and collaboration opportunities",
+            "url": "https://tahmid-kabir-portfolio.vercel.app/contact"
+          }
+        ]
+      }
+    ]
+  };
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+
+    return () => {
+      try {
+        document.head.removeChild(script);
+      } catch (e) {
+        // Handle case where script might already be removed
+      }
+    };
+  }, []);
+
+  return null;
+}
+
 // Grid Background - Replacing the HexagonBackground
 const GridBackground = () => {
   return (
@@ -367,6 +517,7 @@ const profile = {
         <i className="fas fa-chevron-down text-blue-400 text-xl"></i>
       </a>
       <PortfolioPage />
+      <StructuredData />
     </>
   );
 }

@@ -158,5 +158,80 @@ export const metadata = {
 };
 
 export default function EducationPage() {
-  return <EducationClient />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tahmid Kabir",
+    "description": "Computer Science Engineering student at SUST with exceptional academic record and strong foundation in algorithms, data structures, and web technologies.",
+    "url": "https://tahmid-kabir-portfolio.vercel.app/education",
+    "sameAs": [
+      "https://github.com/Tahmid-kabir-addin",
+      "https://www.linkedin.com/in/tahmid-kabir-44b4671b1/"
+    ],
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Shahjalal University of Science and Technology",
+        "alternateName": "SUST",
+        "location": {
+          "@type": "Place",
+          "name": "Sylhet, Bangladesh"
+        }
+      },
+      {
+        "@type": "EducationalOrganization", 
+        "name": "Notre Dame College Dhaka",
+        "location": {
+          "@type": "Place",
+          "name": "Dhaka, Bangladesh"
+        }
+      },
+      {
+        "@type": "EducationalOrganization",
+        "name": "Mohammadpur Government High School", 
+        "location": {
+          "@type": "Place",
+          "name": "Dhaka, Bangladesh"
+        }
+      }
+    ],
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Bachelor of Science in Computer Science & Engineering",
+        "credentialCategory": "degree",
+        "educationalLevel": "Bachelor's",
+        "recognizedBy": {
+          "@type": "CollegeOrUniversity",
+          "name": "Shahjalal University of Science and Technology"
+        },
+        "dateCreated": "2020-02",
+        "expires": "2025-06",
+        "description": "CGPA: 3.95/4.00. Advanced computer science education with emphasis on algorithms, data structures, DBMS, networking, and web technologies."
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Higher Secondary Certificate",
+        "credentialCategory": "certificate",
+        "educationalLevel": "High School",
+        "recognizedBy": {
+          "@type": "EducationalOrganization",
+          "name": "Notre Dame College Dhaka"
+        },
+        "dateCreated": "2017",
+        "expires": "2019",
+        "description": "GPA: 5.00/5.00. Perfect academic performance in Science subjects including Mathematics, Physics, and Chemistry."
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <EducationClient />
+    </>
+  );
 }
