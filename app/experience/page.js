@@ -214,5 +214,96 @@ export const metadata = {
 };
 
 export default function ExperiencePage() {
-  return <ExperienceClient />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tahmid Kabir",
+    "jobTitle": "Full-Stack Software Engineer",
+    "description": "Proven software engineering experience with quantified achievements: 10k+ daily users, 60% performance improvements, and international collaboration.",
+    "url": "https://tahmid-kabir-portfolio.vercel.app/experience",
+    "sameAs": [
+      "https://github.com/Tahmid-kabir-addin",
+      "https://www.linkedin.com/in/tahmid-kabir-44b4671b1/"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "79mplus",
+      "location": {
+        "@type": "Place",
+        "name": "Dhaka, Bangladesh"
+      }
+    },
+    "hasOccupation": [
+      {
+        "@type": "Occupation",
+        "name": "Junior Software Engineer",
+        "occupationLocation": {
+          "@type": "Place",
+          "name": "Dhaka, Bangladesh"
+        },
+        "employer": {
+          "@type": "Organization",
+          "name": "79mplus",
+          "location": {
+            "@type": "Place", 
+            "name": "Dhaka, Bangladesh"
+          }
+        },
+        "startDate": "2025-05",
+        "description": "Driving enterprise e-commerce solutions development with focus on scalability and performance. Architected headless Next.js solutions handling 10k+ daily users.",
+        "skills": [
+          "Next.js Architecture",
+          "Enterprise E-commerce",
+          "CI/CD Optimization",
+          "PCI-DSS Compliance",
+          "Payment Gateway Integration",
+          "Performance Engineering"
+        ]
+      },
+      {
+        "@type": "Occupation",
+        "name": "Trainee Software Engineer", 
+        "occupationLocation": {
+          "@type": "Place",
+          "name": "Sylhet, Bangladesh"
+        },
+        "employer": {
+          "@type": "Organization",
+          "name": "InfancyIT",
+          "location": {
+            "@type": "Place",
+            "name": "Sylhet, Bangladesh"
+          }
+        },
+        "startDate": "2024-01",
+        "endDate": "2025-04",
+        "description": "Specialized in backend scalability and performance engineering for legacy systems. Achieved 60% application speed improvements and automated complex workflows.",
+        "skills": [
+          "Performance Optimization",
+          "Remix.js Development",
+          "GraphQL Implementation", 
+          "Shopify App Development",
+          "Legacy System Modernization",
+          "Workflow Automation"
+        ]
+      }
+    ],
+    "award": [
+      "10k+ Daily Active Users Management",
+      "60% Application Performance Improvement",
+      "40% Deployment Time Reduction",
+      "30% Bug Reduction Achievement",
+      "50% Workflow Automation Efficiency"
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ExperienceClient />
+    </>
+  );
 }

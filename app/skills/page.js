@@ -162,5 +162,74 @@ export const metadata = {
 };
 
 export default function SkillsPage() {
-  return <SkillsClient />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tahmid Kabir",
+    "jobTitle": "Full-Stack Software Engineer",
+    "description": "Comprehensive technical skills including React.js, Next.js, Node.js, TypeScript, Python, Java, MongoDB, PostgreSQL, AWS, Docker, and payment integrations.",
+    "url": "https://tahmid-kabir-portfolio.vercel.app/skills",
+    "sameAs": [
+      "https://github.com/Tahmid-kabir-addin",
+      "https://www.linkedin.com/in/tahmid-kabir-44b4671b1/"
+    ],
+    "knowsAbout": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "Java",
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "PostgreSQL",
+      "AWS",
+      "Docker",
+      "Payment Integration",
+      "Full-Stack Development",
+      "Software Engineering"
+    ],
+    "hasSkill": [
+      {
+        "@type": "DefinedTerm",
+        "name": "JavaScript",
+        "description": "Advanced JavaScript programming"
+      },
+      {
+        "@type": "DefinedTerm", 
+        "name": "React.js",
+        "description": "Frontend development with React"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Next.js",
+        "description": "Full-stack React framework"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Node.js", 
+        "description": "Backend JavaScript runtime"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "MongoDB",
+        "description": "NoSQL database management"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "AWS",
+        "description": "Cloud computing and deployment"
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <SkillsClient />
+    </>
+  );
 }

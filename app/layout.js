@@ -156,10 +156,113 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tahmid Kabir",
+    "jobTitle": "Full-Stack Software Engineer",
+    "description": "Software Engineer with 1+ years of experience building high-impact, scalable solutions. Specialized in Next.js, React, Node.js, payment systems, and performance optimization.",
+    "url": "https://tahmid-kabir-portfolio.vercel.app",
+    "email": "tahmidkabiraddin@gmail.com",
+    "telephone": "+880-1638587407",
+    "image": "https://tahmid-kabir-portfolio.vercel.app/og.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dhaka",
+      "addressRegion": "Dhaka Division",
+      "addressCountry": "Bangladesh"
+    },
+    "nationality": {
+      "@type": "Country",
+      "name": "Bangladesh"
+    },
+    "sameAs": [
+      "https://github.com/Tahmid-kabir-addin",
+      "https://www.linkedin.com/in/tahmid-kabir-44b4671b1/"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "79mplus",
+      "location": {
+        "@type": "Place",
+        "name": "Dhaka, Bangladesh"
+      }
+    },
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Shahjalal University of Science and Technology",
+        "alternateName": "SUST",
+        "location": {
+          "@type": "Place",
+          "name": "Sylhet, Bangladesh"
+        }
+      }
+    ],
+    "knowsAbout": [
+      "JavaScript",
+      "TypeScript", 
+      "Python",
+      "Java",
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "PostgreSQL",
+      "AWS",
+      "Docker",
+      "Payment Integration",
+      "E-commerce Development",
+      "SaaS Development",
+      "Performance Optimization",
+      "Full-Stack Development",
+      "Software Engineering"
+    ],
+    "hasOccupation": {
+      "@type": "Occupation",
+      "name": "Full-Stack Software Engineer",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Dhaka, Bangladesh"
+      },
+      "skills": [
+        "Next.js Development",
+        "React Development",
+        "Node.js Development",
+        "Payment Integration",
+        "Performance Optimization",
+        "E-commerce Solutions",
+        "SaaS Development"
+      ]
+    },
+    "offers": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Full-Stack Web Development Services",
+        "description": "Professional web development services including React.js, Next.js, e-commerce platforms, SaaS development, payment integration, and performance optimization.",
+        "serviceType": [
+          "Web Development",
+          "E-commerce Development",
+          "SaaS Platform Development", 
+          "Payment Integration",
+          "Performance Optimization",
+          "Custom Software Development"
+        ]
+      },
+      "availability": "Available",
+      "availableDeliveryMethod": "Remote"
+    }
+  };
+
   return (
     <html lang="en">
       <head>
         <AdvancedAnalytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

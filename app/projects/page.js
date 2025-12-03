@@ -213,5 +213,116 @@ export const metadata = {
 };
 
 export default function ProjectsPage() {
-  return <ProjectsClient />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Tahmid Kabir",
+    "jobTitle": "Full-Stack Software Engineer",
+    "description": "Featured software projects showcasing high-impact solutions: e-commerce platforms, SaaS systems, inventory management, and desktop applications.",
+    "url": "https://tahmid-kabir-portfolio.vercel.app/projects",
+    "sameAs": [
+      "https://github.com/Tahmid-kabir-addin",
+      "https://www.linkedin.com/in/tahmid-kabir-44b4671b1/"
+    ],
+    "hasCreated": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Vinyl Status",
+        "description": "High-performance headless e-commerce platform with 95+ Lighthouse score and 30% ROI increase. Built with Next.js 15 and modern payment integrations.",
+        "url": "https://vinylstatus.com",
+        "applicationCategory": "E-commerce Platform",
+        "operatingSystem": "Web",
+        "programmingLanguage": ["JavaScript", "TypeScript"],
+        "runtimePlatform": "Next.js 15",
+        "featureList": [
+          "95+ Lighthouse Score",
+          "Great Core Web Vitals", 
+          "30% ROI Increase",
+          "Headless CMS",
+          "SEO Optimized",
+          "Stripe Payment Integration",
+          "PayPal Integration",
+          "AfterPay Integration"
+        ],
+        "creator": {
+          "@type": "Person",
+          "name": "Tahmid Kabir"
+        }
+      },
+      {
+        "@type": "SoftwareApplication", 
+        "name": "LinkedLogi",
+        "description": "Multi-tenant logistics management system with 6ms latency and 99.9% uptime. Streamlines RFQ workflows for complex business operations.",
+        "url": "https://linkedlogi.com",
+        "applicationCategory": "SaaS Platform",
+        "operatingSystem": "Web",
+        "programmingLanguage": ["TypeScript", "JavaScript"],
+        "runtimePlatform": "Next.js 14",
+        "featureList": [
+          "6ms Latency",
+          "99.9% Uptime", 
+          "Multi-tenant Architecture",
+          "Real-time Updates",
+          "RFQ Workflow Management"
+        ],
+        "creator": {
+          "@type": "Person",
+          "name": "Tahmid Kabir"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "LWSkart", 
+        "description": "Real-time inventory management system with optimistic UI updates and global internationalization support.",
+        "url": "https://lwskart.com",
+        "codeRepository": "https://github.com/Tahmid-kabir-addin/LWSkart",
+        "applicationCategory": "E-commerce Platform",
+        "operatingSystem": "Web",
+        "programmingLanguage": ["JavaScript"],
+        "runtimePlatform": "Next.js",
+        "featureList": [
+          "Real-time Synchronization",
+          "Sub-second UI Performance",
+          "Global Internationalization",
+          "Inventory Management",
+          "Optimistic UI Updates"
+        ],
+        "creator": {
+          "@type": "Person",
+          "name": "Tahmid Kabir"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Pigeonnier",
+        "description": "Lightweight JavaFX email client with MVP architecture pattern, supporting multi-account management and rich text editing.",
+        "codeRepository": "https://github.com/TahmidKabir-2019331016/Pigeonnier.git",
+        "applicationCategory": "Desktop Email Client",
+        "operatingSystem": "Cross-platform",
+        "programmingLanguage": ["Java"],
+        "runtimePlatform": "JavaFX",
+        "featureList": [
+          "Multi-account Support",
+          "Rich Text Editor",
+          "Secure Authentication",
+          "IMAP/SMTP Implementation",
+          "MVP Design Pattern"
+        ],
+        "creator": {
+          "@type": "Person", 
+          "name": "Tahmid Kabir"
+        }
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProjectsClient />
+    </>
+  );
 }
