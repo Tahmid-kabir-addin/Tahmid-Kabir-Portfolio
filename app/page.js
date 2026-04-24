@@ -173,7 +173,7 @@ const profile = {
 
   return (
     <>
-      <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8 overflow-hidden pt-24 md:pt-0 bg-[#0A0A0A]">
+      <section id="home" className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8 overflow-hidden pt-24 md:pt-0 bg-[#0A0A0A]">
         <DecoBackground />
 
         {/* Main content */}

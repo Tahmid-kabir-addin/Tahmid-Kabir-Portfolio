@@ -117,18 +117,22 @@ export default function ContactClient() {
   const socialLinks = [
     {
       name: "GitHub",
+      label: "GitHub",
+      handle: "Tahmid-kabir-addin",
       icon: <Github className="w-5 h-5" aria-hidden="true" />,
       link: "https://github.com/Tahmid-kabir-addin",
     },
     {
       name: "LinkedIn",
+      label: "LinkedIn",
+      handle: "tahmid-kabir-44b4671b1",
       icon: <Linkedin className="w-5 h-5" aria-hidden="true" />,
       link: "https://www.linkedin.com/in/tahmid-kabir-44b4671b1/",
     },
   ];
 
   return (
-    <div id="contact" className="min-h-screen bg-[#0A0A0A] relative py-24 md:py-36 overflow-hidden" style={{ scrollMarginTop: "5rem" }}>
+    <div id="contact" className="bg-[#0A0A0A] relative py-24 overflow-hidden" style={{ scrollMarginTop: "5rem" }}>
       {/* Background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -238,30 +242,49 @@ export default function ContactClient() {
             </div>
 
             {/* Social links */}
-            <div>
+            <div className="space-y-3">
               <p
                 className="text-[#D4AF37] text-[10px] tracking-[0.3em] uppercase mb-4"
                 style={{ fontFamily: "var(--font-josefin)" }}
               >
                 Profiles
               </p>
-              <div className="flex gap-3">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={index}
-                    href={social.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                    className="w-12 h-12 border border-[#D4AF37]/30 flex items-center justify-center text-[#888888] hover:border-[#D4AF37] hover:text-[#D4AF37] hover:shadow-[0_0_12px_rgba(212,175,55,0.2)] transition-all duration-300"
-                  >
-                    {social.icon}
-                  </motion.a>
-                ))}
-              </div>
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 + index * 0.1 }}
+                  className="group flex items-center gap-4 p-4 border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 hover:shadow-[0_0_12px_rgba(212,175,55,0.1)] transition-all duration-300 bg-[#141414]"
+                >
+                  <div className="relative w-8 h-8 flex-shrink-0">
+                    <span
+                      className="absolute inset-0 rotate-45 border border-[#D4AF37]/40 group-hover:border-[#D4AF37] transition-colors duration-300"
+                      aria-hidden="true"
+                    />
+                    <span className="absolute inset-0 flex items-center justify-center text-[#D4AF37]">
+                      {social.icon}
+                    </span>
+                  </div>
+                  <div className="min-w-0">
+                    <p
+                      className="text-[#D4AF37] text-[10px] tracking-[0.25em] uppercase mb-0.5"
+                      style={{ fontFamily: "var(--font-josefin)" }}
+                    >
+                      {social.label}
+                    </p>
+                    <p
+                      className="text-[#888888] text-sm tracking-wide group-hover:text-[#F2F0E4] transition-colors duration-300 truncate"
+                      style={{ fontFamily: "var(--font-josefin)" }}
+                    >
+                      {social.handle}
+                    </p>
+                  </div>
+                </motion.a>
+              ))}
             </div>
           </motion.div>
 

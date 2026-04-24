@@ -31,7 +31,7 @@ const SkillBadge = ({ skill, index }) => (
   <motion.div
     initial={{ opacity: 0, scale: 0.85 }}
     whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
+    viewport={{ once: true, amount: 0 }}
     transition={{ delay: index * 0.04, duration: 0.3 }}
     className="group"
   >
@@ -53,12 +53,12 @@ const SkillCategory = ({ category, index }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
+    viewport={{ once: true, amount: 0 }}
     transition={{ delay: index * 0.08, duration: 0.5 }}
-    className="group relative"
+    className="group relative flex flex-col"
   >
     {/* Art Deco card */}
-    <div className="relative bg-[#141414] border border-[#D4AF37]/25 p-8 hover:border-[#D4AF37]/80 hover:shadow-[0_0_25px_rgba(212,175,55,0.1)] transition-all duration-500">
+    <div className="relative flex flex-col flex-1 bg-[#141414] border border-[#D4AF37]/25 p-8 hover:border-[#D4AF37]/80 hover:shadow-[0_0_25px_rgba(212,175,55,0.1)] transition-all duration-500">
       {/* Corner decorations */}
       <span className="absolute top-3 left-3 w-4 h-4 border-t border-l border-[#D4AF37]/40 group-hover:border-[#D4AF37] transition-colors duration-500" aria-hidden="true" />
       <span className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-[#D4AF37]/40 group-hover:border-[#D4AF37] transition-colors duration-500" aria-hidden="true" />
@@ -179,7 +179,7 @@ export default function SkillsClient() {
   ];
 
   return (
-    <div id="skills" className="min-h-screen bg-[#0A0A0A] relative overflow-hidden pt-24 pb-24" style={{ scrollMarginTop: "5rem" }}>
+    <div id="skills" className="bg-[#0A0A0A] relative overflow-hidden pt-24 pb-24" style={{ scrollMarginTop: "5rem" }}>
       {/* Crosshatch background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -239,7 +239,7 @@ export default function SkillsClient() {
         </motion.div>
 
         {/* Skills grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto" style={{ gridAutoRows: '1fr' }}>
           {skillCategories.map((category, index) => (
             <SkillCategory key={index} category={category} index={index} />
           ))}

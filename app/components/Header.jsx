@@ -19,11 +19,34 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const path = window.location.pathname.substring(1) || "home";
-    setActiveLink(path);
+    const HEADER_HEIGHT = 80;
+    const sectionIds = ["home", "about", "skills", "experience", "education", "projects", "contact"];
 
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
+    // Set initial active from URL hash or scroll position
+    const getActiveSection = () => {
+      const scrollY = window.scrollY + HEADER_HEIGHT + 10;
+      let current = "home";
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) {
+          current = id;
+        }
+      }
+      return current;
+    };
+
+    const hash = window.location.hash.replace("#", "");
+    setActiveLink(hash || getActiveSection());
+
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      const active = getActiveSection();
+      setActiveLink(active);
+      const newHash = active === "home" ? "" : `#${active}`;
+      history.replaceState(null, "", `/${newHash}`);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

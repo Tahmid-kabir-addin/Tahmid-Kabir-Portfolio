@@ -8,7 +8,7 @@ const EducationCard = ({ education, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0 }}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       className="relative group"
     >
@@ -127,7 +127,7 @@ export default function EducationClient() {
   ];
 
   return (
-    <div id="education" className="min-h-screen bg-[#0A0A0A] relative py-24 md:py-36 overflow-hidden" style={{ scrollMarginTop: "5rem" }}>
+    <div id="education" className="bg-[#0A0A0A] relative py-24 overflow-hidden" style={{ scrollMarginTop: "5rem" }}>
       {/* Background */}
       <div
         className="absolute inset-0 pointer-events-none"

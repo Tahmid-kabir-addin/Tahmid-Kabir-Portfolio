@@ -11,7 +11,7 @@ const ExperienceCard = ({ experience, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, amount: 0 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
       className="relative pl-8 md:pl-0"
     >
@@ -25,8 +25,8 @@ const ExperienceCard = ({ experience, index }) => {
 
       <div className={`md:flex items-start justify-between gap-10 ${isEven ? "md:flex-row" : "md:flex-row-reverse"}`}>
         {/* Date & Location (desktop) */}
-        <div className={`hidden md:block w-5/12 ${isEven ? "text-right" : "text-left"}`}>
-          <div className="sticky top-24">
+        <div className={`hidden md:flex w-5/12 items-center ${isEven ? "justify-end" : "justify-start"}`}>
+          <div className={isEven ? "text-right" : "text-left"}>
             <div
               className="text-xl text-[#D4AF37] mb-2 uppercase tracking-wider"
               style={{ fontFamily: "var(--font-marcellus)" }}
@@ -50,6 +50,7 @@ const ExperienceCard = ({ experience, index }) => {
               className="absolute top-0 left-1/2 -translate-x-1/2 w-0.5 h-full bg-[#D4AF37]/50 origin-top"
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, amount: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
             />
           </div>
@@ -157,7 +158,7 @@ export default function ExperienceClient() {
   ];
 
   return (
-    <div id="experience" className="min-h-screen bg-[#0A0A0A] relative py-24 md:py-36 overflow-hidden" style={{ scrollMarginTop: "5rem" }}>
+    <div id="experience" className="bg-[#0A0A0A] relative py-24 overflow-hidden" style={{ scrollMarginTop: "5rem" }}>
       {/* Background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -177,7 +178,7 @@ export default function ExperienceClient() {
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center mb-20 space-y-4"
         >
@@ -211,7 +212,7 @@ export default function ExperienceClient() {
           </div>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto space-y-12 md:space-y-32">
+        <div className="max-w-6xl mx-auto space-y-12 md:space-y-16">
           {experiences.map((exp, index) => (
             <ExperienceCard key={index} experience={exp} index={index} />
           ))}
@@ -221,38 +222,4 @@ export default function ExperienceClient() {
   );
 }
 
-const ScrollIndicator = () => {
-  const [hasScrolled, setHasScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setHasScrolled(true);
-        window.removeEventListener('scroll', handleScroll);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  if (hasScrolled) return null;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="fixed bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400 z-50 pointer-events-none"
-    >
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-        className="flex flex-col items-center gap-2"
-      >
-        <span className="text-sm font-medium">Scroll to explore</span>
-        <ChevronDown className="w-5 h-5" />
-      </motion.div>
-    </motion.div>
-  );
-};
 

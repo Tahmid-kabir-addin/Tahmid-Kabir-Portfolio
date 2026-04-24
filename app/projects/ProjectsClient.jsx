@@ -55,12 +55,12 @@ const ProjectCard = ({ project, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, amount: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative"
+      className="group relative flex flex-col h-full"
     >
       {/* Art Deco card */}
-      <div className="relative h-full bg-[#141414] border border-[#D4AF37]/25 hover:border-[#D4AF37]/80 hover:shadow-[0_0_30px_rgba(212,175,55,0.12)] hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+      <div className="relative flex flex-col flex-1 bg-[#141414] border border-[#D4AF37]/25 hover:border-[#D4AF37]/80 hover:shadow-[0_0_30px_rgba(212,175,55,0.12)] hover:-translate-y-2 transition-all duration-500 overflow-hidden">
         {/* Corner stepped decorations */}
         <span className="absolute top-3 left-3 w-5 h-5 border-t border-l border-[#D4AF37]/40 group-hover:border-[#D4AF37] transition-colors duration-500 z-20" aria-hidden="true" />
         <span className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-[#D4AF37]/40 group-hover:border-[#D4AF37] transition-colors duration-500 z-20" aria-hidden="true" />
@@ -75,7 +75,7 @@ const ProjectCard = ({ project, index }) => {
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+            className="object-cover group-hover:scale-105 transition-all duration-700"
           />
 
           {/* Category badge */}
@@ -129,7 +129,7 @@ const ProjectCard = ({ project, index }) => {
         </div>
 
         {/* Content */}
-        <div className="p-6 md:p-8 space-y-5">
+        <div className="p-6 md:p-8 flex flex-col flex-1 gap-5">
           <h3
             className="text-2xl text-[#F2F0E4] group-hover:text-[#D4AF37] transition-colors duration-300 uppercase tracking-wider"
             style={{ fontFamily: "var(--font-marcellus)" }}
@@ -138,14 +138,14 @@ const ProjectCard = ({ project, index }) => {
           </h3>
 
           <p
-            className="text-[#888888] text-sm leading-relaxed"
+            className="text-[#888888] text-sm leading-relaxed flex-1"
             style={{ fontFamily: "var(--font-josefin)" }}
           >
             {project.description}
           </p>
 
           {/* Stats — Art Deco bordered cells */}
-          <div className={`grid gap-2 ${project.stats.length > 3 ? "grid-cols-3" : "grid-cols-3"}`}>
+          <div className="grid grid-cols-3 gap-2">
             {project.stats.map((stat, i) => (
               <div
                 key={i}
@@ -203,7 +203,7 @@ const ProjectCard = ({ project, index }) => {
 
 export default function ProjectsClient() {
   return (
-    <div id="projects" className="min-h-screen bg-[#0A0A0A] relative py-24 md:py-36 overflow-hidden" style={{ scrollMarginTop: "5rem" }}>
+    <div id="projects" className="bg-[#0A0A0A] relative py-24 overflow-hidden" style={{ scrollMarginTop: "5rem" }}>
       {/* Background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -258,7 +258,7 @@ export default function ProjectsClient() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto" style={{ gridAutoRows: '1fr' }}>
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}

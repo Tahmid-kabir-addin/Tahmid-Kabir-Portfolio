@@ -40,7 +40,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative py-24 md:py-36 bg-[#0A0A0A] overflow-hidden"
+      className="relative py-24 bg-[#0A0A0A] overflow-hidden"
       style={{ scrollMarginTop: "5rem" }}
     >
       {/* Crosshatch background */}
@@ -107,10 +107,10 @@ export default function About() {
                 <span className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]" aria-hidden="true" />
                 <span className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]" aria-hidden="true" />
                 {/* Inner dark border + image */}
-                <div className="border-2 border-[#0A0A0A] overflow-hidden">
+                <div className="border-2 border-[#0A0A0A] overflow-hidden aspect-[4/5]">
                   <Image
                     src={TahmidImage}
-                    className="block w-full transition-all duration-700"
+                    className="w-full h-full object-cover object-top transition-all duration-700"
                     alt="Tahmid Kabir — Full-Stack Software Engineer"
                     width={1207}
                     height={929}
