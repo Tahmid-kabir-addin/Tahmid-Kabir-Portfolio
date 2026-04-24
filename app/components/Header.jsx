@@ -78,17 +78,21 @@ export default function Header() {
             <Link
               href="/"
               onClick={() => setActiveLink("home")}
-              className="group relative flex items-center gap-3"
+              className="group flex items-center gap-3"
               aria-label="Home"
             >
-              {/* Diamond emblem */}
-              <span
-                className="w-5 h-5 rotate-45 border border-[#D4AF37] group-hover:bg-[#D4AF37] transition-colors duration-300 flex-shrink-0"
-                aria-hidden="true"
-              />
+              {/* Diamond monogram */}
+              <div className="w-8 h-8 rotate-45 border-2 border-[#D4AF37] flex items-center justify-center group-hover:bg-[#D4AF37]/10 transition-colors duration-300 flex-shrink-0">
+                <span
+                  className="-rotate-45 text-[#D4AF37] text-[10px] font-bold tracking-widest"
+                  aria-hidden="true"
+                >
+                  TK
+                </span>
+              </div>
               <span
                 style={{ fontFamily: "var(--font-marcellus)" }}
-                className="text-[#D4AF37] tracking-[0.18em] text-sm uppercase hidden sm:block"
+                className="text-[#D4AF37] tracking-[0.2em] text-sm uppercase hidden sm:block"
               >
                 Tahmid Kabir
               </span>
