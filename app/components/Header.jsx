@@ -22,32 +22,73 @@ export default function Header() {
     const HEADER_HEIGHT = 80;
     const sectionIds = ["home", "about", "skills", "experience", "education", "projects", "contact"];
 
-    // Set initial active from URL hash or scroll position
-    const getActiveSection = () => {
-      const scrollY = window.scrollY + HEADER_HEIGHT + 10;
+    // Cache section offsets once — avoids DOM queries on every scroll
+    let sectionOffsets = [];
+    const cacheSectionOffsets = () => {
+      sectionOffsets = sectionIds.map((id) => ({
+        id,
+        top: document.getElementById(id)?.offsetTop ?? 0,
+      }));
+    };
+    cacheSectionOffsets();
+
+    // Recache on resize (offsets change when layout reflows)
+    window.addEventListener("resize", cacheSectionOffsets, { passive: true });
+
+    const getActiveSection = (scrollY) => {
+      const pos = scrollY + HEADER_HEIGHT + 10;
       let current = "home";
-      for (const id of sectionIds) {
-        const el = document.getElementById(id);
-        if (el && el.offsetTop <= scrollY) {
-          current = id;
-        }
+      for (const { id, top } of sectionOffsets) {
+        if (top <= pos) current = id;
       }
       return current;
     };
 
     const hash = window.location.hash.replace("#", "");
-    setActiveLink(hash || getActiveSection());
+    setActiveLink(hash || getActiveSection(window.scrollY));
+
+    let rafId = null;
+    let lastActive = hash || "home";
+    let lastScrolled = false;
+    // Debounce replaceState — only update URL 300ms after scrolling stops
+    let hashTimer = null;
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-      const active = getActiveSection();
-      setActiveLink(active);
-      const newHash = active === "home" ? "" : `#${active}`;
-      history.replaceState(null, "", `/${newHash}`);
+      if (rafId) return; // Already scheduled — skip
+      rafId = requestAnimationFrame(() => {
+        rafId = null;
+        const y = window.scrollY;
+
+        // Update header bg state
+        const nowScrolled = y > 20;
+        if (nowScrolled !== lastScrolled) {
+          lastScrolled = nowScrolled;
+          setScrolled(nowScrolled);
+        }
+
+        // Update active nav link (lightweight state set only when changed)
+        const active = getActiveSection(y);
+        if (active !== lastActive) {
+          lastActive = active;
+          setActiveLink(active);
+        }
+
+        // Debounce URL hash update — history.replaceState is expensive
+        clearTimeout(hashTimer);
+        hashTimer = setTimeout(() => {
+          const newHash = active === "home" ? "" : `#${active}`;
+          history.replaceState(null, "", `/${newHash}`);
+        }, 150);
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", cacheSectionOffsets);
+      if (rafId) cancelAnimationFrame(rafId);
+      clearTimeout(hashTimer);
+    };
   }, []);
 
   const navLinks = [
@@ -65,7 +106,7 @@ export default function Header() {
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-[#0A0A0A]/95 backdrop-blur-md border-b border-[#D4AF37]/20 shadow-[0_4px_20px_rgba(212,175,55,0.08)]"
+            ? "bg-[#0A0A0A]/97 sm:bg-[#0A0A0A]/95 sm:backdrop-blur-md border-b border-[#D4AF37]/20 shadow-[0_4px_20px_rgba(212,175,55,0.08)]"
             : "bg-transparent"
         }`}
       >
