@@ -1,19 +1,21 @@
 import { Analytics } from "@vercel/analytics/react";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Josefin_Sans, Marcellus } from "next/font/google";
 import "./assets/css/index.css";
 import AdvancedAnalytics from "./components/AdvancedAnalytics";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const marcellus = Marcellus({
+  variable: "--font-marcellus",
   subsets: ["latin"],
+  weight: "400",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const josefinSans = Josefin_Sans({
+  variable: "--font-josefin",
   subsets: ["latin"],
+  weight: ["300", "400", "600", "700"],
 });
 
 export const metadata = {
@@ -265,10 +267,11 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${marcellus.variable} ${josefinSans.variable} antialiased`}
+        style={{ fontFamily: "var(--font-josefin), sans-serif", background: "#0A0A0A", color: "#F2F0E4" }}
       >
         <Header />
-        <main className="min-h-screen bg-gray-900 text-white">{children}</main>
+        <main className="min-h-screen bg-[#0A0A0A] text-[#F2F0E4]">{children}</main>
         <Footer />
         <Analytics />
       </body>

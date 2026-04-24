@@ -2,43 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes float-slow {
-  0%,
-  100% {
-    transform: translateY(0) rotate(1deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(-1deg);
-  }
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.gradient-text {
-  background: linear-gradient(90deg, #60a5fa, #34d399, #60a5fa);
-  background-size: 200% auto;
-  animation: gradient-shift 4s linear infinite;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
+/* ─── Art Deco Code Window ─── */
 .gradient-border {
   position: relative;
-  background: linear-gradient(45deg, #60a5fa, #34d399);
+  background: linear-gradient(135deg, #D4AF37 0%, #8B7430 50%, #D4AF37 100%);
   padding: 2px;
-  border-radius: 0.75rem;
+  border-radius: 0;
 }
 
+.code-window {
+  position: relative;
+  border-radius: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.window-header {
+  background: #0D0D0D;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.window-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 0;
+  transition: transform 0.3s ease;
+}
+
+.window-dot:hover {
+  transform: scale(1.2);
+}
+
+/* ─── Hero ─── */
+.hero {
+  position: relative;
+  background: #0A0A0A;
+}
+
+/* ─── Art Deco nav-link underline ─── */
 .nav-link {
   position: relative;
 }
@@ -47,196 +52,69 @@
   content: "";
   position: absolute;
   width: 0;
-  height: 2px;
-  bottom: -4px;
+  height: 1px;
+  bottom: -3px;
   left: 0;
-  background: linear-gradient(45deg, #60a5fa, #34d399);
-  transition: width 0.3s ease;
+  background: #D4AF37;
+  transition: width 0.35s ease;
 }
 
 .nav-link:hover::after {
   width: 100%;
 }
 
-.code-window {
-  position: relative;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.window-header {
-  background: #0b466359;
-  padding: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.window-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.window-dot:hover {
-  transform: scale(1.2);
-}
-
-.animate-float-slow {
-  animation: float-slow 7s ease-in-out infinite;
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
-}
-
-.typing-effect::after {
-  content: "|";
-  animation: blink 1s step-end infinite;
-  margin-left: 2px;
-  color: #60a5fa;
-}
-
-@keyframes blink {
-  from,
-  to {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-/* Enhanced Prism.js styling */
+/* ─── Prism code highlight ─── */
 pre[class*="language-"] {
-  background: #091121 !important;
+  background: #0A0A0A !important;
   padding: 1.5rem !important;
   margin: 0 !important;
-  font-size: 0.85rem !important;
-  line-height: 1.6 !important;
-  max-height: 500px !important;
+  font-size: 0.82rem !important;
+  line-height: 1.7 !important;
+  max-height: 520px !important;
   overflow-y: auto !important;
 }
 
-.token.comment {
-  color: #8b9cb3 !important;
-  font-style: italic;
+.token.comment  { color: rgba(212,175,55,0.45) !important; font-style: italic; }
+.token.string   { color: #F2E8C4 !important; }
+.token.keyword  { color: #D4AF37 !important; }
+.token.function { color: #F2E8C4 !important; }
+.token.number   { color: rgba(212,175,55,0.8) !important; }
+.token.operator { color: #D4AF37 !important; }
+.token.punctuation { color: rgba(242,240,228,0.5) !important; }
+
+/* ─── Animations ─── */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(1deg); }
+  50%       { transform: translateY(-10px) rotate(-1deg); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-20px); }
+}
+@keyframes deco-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
-.token.string {
-  color: #a5d6ff !important;
-}
+.animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+.animate-float      { animation: float 6s ease-in-out infinite; }
 
-.token.keyword {
-  color: #ff79c6 !important;
-}
-
-.token.function {
-  color: #66e7ff !important;
-}
-
-/* Add these classes to adjust the grid colors in the top-left and bottom-right */
-.top-left-grid {
-  background-color: white;
-  opacity: 0.8; /* Make it more visible */
-}
-
-.bottom-right-grid {
-  background-color: white;
-  opacity: 0.8; /* Make it more visible */
-}
-
-/* Hero section improvements */
-.hero {
-  position: relative;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-}
-
-/* Responsive improvements */
+/* ─── Responsive ─── */
 @media (max-width: 768px) {
   .hero {
     min-height: 100vh;
-    padding-top: 5rem; /* Increased to account for fixed header */
+    padding-top: 5rem;
     padding-bottom: 2rem;
   }
-
-  .gradient-border {
-    margin-top: 2rem;
-  }
-
+  .gradient-border { margin-top: 2rem; }
   pre[class*="language-"] {
-    font-size: 0.75rem !important;
+    font-size: 0.72rem !important;
     padding: 1rem !important;
   }
-
-  /* Ensure main content doesn't overlap with fixed header */
-  main {
-    padding-top: 0;
-  }
-
-  /* Add scroll margin for anchor links to account for fixed header */
-  section[id] {
-    scroll-margin-top: 5rem;
-  }
-
-  /* Experience page mobile improvements */
-  .experience-timeline {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .experience-card {
-    margin-bottom: 1.5rem;
-  }
-
-  .experience-icon {
-    margin-bottom: 1rem;
-  }
+  section[id] { scroll-margin-top: 5rem; }
 }
 
 @media (max-width: 640px) {
-  .hero {
-    padding-top: 4.5rem; /* Adjusted for smaller screens */
-  }
-
-  .code-window {
-    max-height: 400px !important;
-  }
-
-  /* Experience page specific mobile styles */
-  .experience-timeline {
-    padding-top: 1rem;
-  }
-
-  .experience-card {
-    padding: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .experience-title {
-    font-size: 1.125rem;
-    line-height: 1.5;
-  }
-
-  .experience-description {
-    font-size: 0.875rem;
-    line-height: 1.6;
-  }
-
-  .experience-achievement {
-    font-size: 0.75rem;
-    line-height: 1.5;
-  }
+  .hero { padding-top: 4.5rem; }
+  .code-window { max-height: 400px !important; }
 }

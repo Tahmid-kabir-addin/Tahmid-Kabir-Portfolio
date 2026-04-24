@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
 import { useState } from "react";
 
 export default function ContactClient() {
@@ -14,7 +14,6 @@ export default function ContactClient() {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [focusedField, setFocusedField] = useState(null);
 
   const validateForm = () => {
     let tempErrors = {};
@@ -96,244 +95,344 @@ export default function ContactClient() {
 
   const contactInfo = [
     {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email",
+      icon: <Mail className="w-4 h-4" aria-hidden="true" />,
+      label: "Email",
       value: "tahmidkabiraddin@gmail.com",
       link: "mailto:tahmidkabiraddin@gmail.com",
-      color: "from-purple-500 to-pink-500",
-      bg: "bg-purple-500/10",
-      text: "text-purple-400"
     },
     {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
+      icon: <Phone className="w-4 h-4" aria-hidden="true" />,
+      label: "Phone",
       value: "+880 1638587407",
       link: "tel:+8801638587407",
-      color: "from-emerald-500 to-teal-500",
-      bg: "bg-emerald-500/10",
-      text: "text-emerald-400"
     },
     {
-      icon: <MapPin className="w-6 h-6" />,
-      title: "Location",
+      icon: <MapPin className="w-4 h-4" aria-hidden="true" />,
+      label: "Location",
       value: "Dhaka, Bangladesh",
       link: null,
-      color: "from-blue-500 to-cyan-500",
-      bg: "bg-blue-500/10",
-      text: "text-blue-400"
-    }
+    },
   ];
 
   const socialLinks = [
     {
       name: "GitHub",
-      icon: <Github className="w-5 h-5" />,
+      icon: <Github className="w-5 h-5" aria-hidden="true" />,
       link: "https://github.com/Tahmid-kabir-addin",
-      color: "hover:text-white"
     },
     {
       name: "LinkedIn",
-      icon: <Linkedin className="w-5 h-5" />,
+      icon: <Linkedin className="w-5 h-5" aria-hidden="true" />,
       link: "https://www.linkedin.com/in/tahmid-kabir-44b4671b1/",
-      color: "hover:text-blue-400"
-    }
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-[#04081A] relative py-12 pt-24 md:py-32 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+    <div id="contact" className="min-h-screen bg-[#0A0A0A] relative py-24 md:py-36 overflow-hidden" style={{ scrollMarginTop: "5rem" }}>
+      {/* Background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(45deg, rgba(212,175,55,0.025) 0px, rgba(212,175,55,0.025) 1px, transparent 1px, transparent 14px), repeating-linear-gradient(-45deg, rgba(212,175,55,0.025) 0px, rgba(212,175,55,0.025) 1px, transparent 1px, transparent 14px)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute bottom-0 right-1/4 w-[500px] h-[500px] pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 65%)" }}
+        aria-hidden="true"
+      />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          
-          {/* Left Column: Info */}
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20 space-y-4"
+        >
+          <div className="flex items-center justify-center gap-4 mb-4" aria-hidden="true">
+            <div className="h-px w-16 bg-[#D4AF37] opacity-50" />
+            <div className="w-2 h-2 rotate-45 bg-[#D4AF37]" />
+            <div className="h-px w-16 bg-[#D4AF37] opacity-50" />
+          </div>
+          <p
+            className="text-[#D4AF37] text-xs tracking-[0.35em] uppercase"
+            style={{ fontFamily: "var(--font-josefin)" }}
+          >
+            Correspondence
+          </p>
+          <h1
+            className="text-4xl md:text-6xl text-[#F2F0E4] uppercase tracking-widest"
+            style={{ fontFamily: "var(--font-marcellus)" }}
+          >
+            Let&apos;s Connect
+          </h1>
+          <p
+            className="text-[#888888] text-base max-w-xl mx-auto tracking-wider"
+            style={{ fontFamily: "var(--font-josefin)" }}
+          >
+            Have a project in mind? I&apos;m always open to discussing new opportunities and creative ideas.
+          </p>
+          <div className="flex items-center justify-center gap-4 pt-2" aria-hidden="true">
+            <div className="h-px w-16 bg-[#D4AF37] opacity-50" />
+            <div className="w-1 h-1 rotate-45 border border-[#D4AF37]" />
+            <div className="h-px w-16 bg-[#D4AF37] opacity-50" />
+          </div>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto items-start">
+          {/* Left: Info */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
+            className="lg:col-span-2 space-y-8"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-center lg:text-left">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-                Let&apos;s Connect
-              </span>
-            </h1>
-            <p className="text-gray-400 text-base md:text-lg mb-8 md:mb-12 leading-relaxed max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
-              Have a project in mind or just want to chat? I&apos;m always open to discussing new projects, creative ideas or opportunities to be part of your visions.
-            </p>
-
-            <div className="space-y-4 md:space-y-6 mb-8 md:mb-12">
+            {/* Contact rows */}
+            <div className="space-y-4">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 + 0.3 }}
-                  className="group flex items-center gap-4 md:gap-6 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 transition-all duration-300"
+                  transition={{ delay: 0.15 + index * 0.1 }}
+                  className="group flex items-start gap-4 p-4 border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 transition-colors duration-300 bg-[#141414]"
                 >
-                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl ${info.bg} flex items-center justify-center ${info.text} group-hover:scale-110 transition-transform duration-300 shrink-0`}>
-                    {info.icon}
+                  <div className="relative w-8 h-8 flex-shrink-0">
+                    <span
+                      className="absolute inset-0 rotate-45 border border-[#D4AF37]/40 group-hover:border-[#D4AF37] transition-colors duration-300"
+                      aria-hidden="true"
+                    />
+                    <span className="absolute inset-0 flex items-center justify-center text-[#D4AF37]">
+                      {info.icon}
+                    </span>
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-sm font-medium text-gray-400 mb-1">{info.title}</h3>
+                    <p
+                      className="text-[#D4AF37] text-[10px] tracking-[0.25em] uppercase mb-1"
+                      style={{ fontFamily: "var(--font-josefin)" }}
+                    >
+                      {info.label}
+                    </p>
                     {info.link ? (
-                      <a href={info.link} className="text-base md:text-lg font-semibold text-white hover:text-blue-400 transition-colors flex items-center gap-2 truncate">
-                        <span className="truncate">{info.value}</span>
-                        <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all shrink-0" />
+                      <a
+                        href={info.link}
+                        className="text-[#888888] text-sm tracking-wide hover:text-[#F2F0E4] transition-colors duration-300 truncate block"
+                        style={{ fontFamily: "var(--font-josefin)" }}
+                      >
+                        {info.value}
                       </a>
                     ) : (
-                      <p className="text-base md:text-lg font-semibold text-white truncate">{info.value}</p>
+                      <p
+                        className="text-[#888888] text-sm tracking-wide truncate"
+                        style={{ fontFamily: "var(--font-josefin)" }}
+                      >
+                        {info.value}
+                      </p>
                     )}
                   </div>
                 </motion.div>
               ))}
             </div>
 
-            <div className="flex gap-4 justify-center lg:justify-start">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6 + index * 0.1 }}
-                  className={`w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 ${social.color} hover:bg-white/10 hover:scale-110 transition-all duration-300`}
-                >
-                  {social.icon}
-                </motion.a>
-              ))}
+            {/* Social links */}
+            <div>
+              <p
+                className="text-[#D4AF37] text-[10px] tracking-[0.3em] uppercase mb-4"
+                style={{ fontFamily: "var(--font-josefin)" }}
+              >
+                Profiles
+              </p>
+              <div className="flex gap-3">
+                {socialLinks.map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.5 + index * 0.1 }}
+                    className="w-12 h-12 border border-[#D4AF37]/30 flex items-center justify-center text-[#888888] hover:border-[#D4AF37] hover:text-[#D4AF37] hover:shadow-[0_0_12px_rgba(212,175,55,0.2)] transition-all duration-300"
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
+              </div>
             </div>
           </motion.div>
 
-          {/* Right Column: Form */}
+          {/* Right: Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="lg:col-span-3 relative bg-[#141414] border border-[#D4AF37]/25 p-8 md:p-10 group hover:border-[#D4AF37]/50 transition-colors duration-500"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-3xl blur-2xl opacity-20" />
-            <div className="relative bg-[#0B1120]/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 shadow-2xl">
-              <h2 className="text-2xl font-bold text-white mb-6 md:mb-8">Send a Message</h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Name Input */}
-                  <div className="relative">
-                    <input
-                      type="text"
-                      id="name"
-                      className={`peer w-full bg-white/5 border ${errors.name ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 pt-6 outline-none focus:border-blue-500 transition-all text-white placeholder-transparent`}
-                      placeholder="Name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      onFocus={() => setFocusedField('name')}
-                      onBlur={() => setFocusedField(null)}
-                    />
-                    <label 
-                      htmlFor="name"
-                      className={`absolute left-4 top-1 text-xs text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3.5 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500`}
-                    >
-                      Your Name
-                    </label>
-                    {errors.name && <span className="text-red-500 text-xs mt-1 block">{errors.name}</span>}
-                  </div>
+            {/* Corner decorations */}
+            <span className="absolute top-3 left-3 w-5 h-5 border-t border-l border-[#D4AF37]/35 group-hover:border-[#D4AF37] transition-colors duration-500" aria-hidden="true" />
+            <span className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-[#D4AF37]/35 group-hover:border-[#D4AF37] transition-colors duration-500" aria-hidden="true" />
 
-                  {/* Email Input */}
-                  <div className="relative">
-                    <input
-                      type="email"
-                      id="email"
-                      className={`peer w-full bg-white/5 border ${errors.email ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 pt-6 outline-none focus:border-blue-500 transition-all text-white placeholder-transparent`}
-                      placeholder="Email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    />
-                    <label 
-                      htmlFor="email"
-                      className={`absolute left-4 top-1 text-xs text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3.5 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500`}
-                    >
-                      Your Email
-                    </label>
-                    {errors.email && <span className="text-red-500 text-xs mt-1 block">{errors.email}</span>}
-                  </div>
-                </div>
+            <h2
+              className="text-xl text-[#F2F0E4] uppercase tracking-widest mb-8"
+              style={{ fontFamily: "var(--font-marcellus)" }}
+            >
+              Send a Message
+            </h2>
 
-                {/* Subject Input */}
-                <div className="relative">
+            <form onSubmit={handleSubmit} className="space-y-7" noValidate>
+              <div className="grid md:grid-cols-2 gap-7">
+                {/* Name */}
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-[#D4AF37] text-[10px] tracking-[0.25em] uppercase mb-2"
+                    style={{ fontFamily: "var(--font-josefin)" }}
+                  >
+                    Your Name
+                  </label>
                   <input
                     type="text"
-                    id="subject"
-                    className={`peer w-full bg-white/5 border ${errors.subject ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 pt-6 outline-none focus:border-blue-500 transition-all text-white placeholder-transparent`}
-                    placeholder="Subject"
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    id="name"
+                    className="w-full bg-transparent border-b-2 border-[#D4AF37]/40 focus:border-[#D4AF37] focus:shadow-[0_4px_10px_rgba(212,175,55,0.15)] outline-none px-1 pb-2 text-[#F2F0E4] placeholder-[#888888]/60 text-sm tracking-wide transition-all duration-300"
+                    style={{ fontFamily: "var(--font-josefin)" }}
+                    placeholder="Tahmid Kabir"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "name-error" : undefined}
                   />
-                  <label 
-                    htmlFor="subject"
-                    className={`absolute left-4 top-1 text-xs text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3.5 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500`}
-                  >
-                    Subject
-                  </label>
-                  {errors.subject && <span className="text-red-500 text-xs mt-1 block">{errors.subject}</span>}
-                </div>
-
-                {/* Message Input */}
-                <div className="relative">
-                  <textarea
-                    id="message"
-                    rows="4"
-                    className={`peer w-full bg-white/5 border ${errors.message ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 pt-6 outline-none focus:border-blue-500 transition-all text-white placeholder-transparent resize-none`}
-                    placeholder="Message"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  ></textarea>
-                  <label 
-                    htmlFor="message"
-                    className={`absolute left-4 top-1 text-xs text-gray-400 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3.5 peer-focus:top-1 peer-focus:text-xs peer-focus:text-blue-500`}
-                  >
-                    Your Message
-                  </label>
-                  {errors.message && <span className="text-red-500 text-xs mt-1 block">{errors.message}</span>}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className={`w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-blue-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
-                >
-                  {isLoading ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Send Message</span>
-                      <Send className="w-5 h-5" />
-                    </>
+                  {errors.name && (
+                    <span id="name-error" className="text-red-400 text-xs mt-1 block" style={{ fontFamily: "var(--font-josefin)" }}>
+                      {errors.name}
+                    </span>
                   )}
-                </button>
+                </div>
 
-                {status && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className={`p-4 rounded-xl text-center text-sm font-medium ${
-                      status.includes("success") 
-                        ? "bg-green-500/10 text-green-400 border border-green-500/20" 
-                        : "bg-red-500/10 text-red-400 border border-red-500/20"
-                    }`}
+                {/* Email */}
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-[#D4AF37] text-[10px] tracking-[0.25em] uppercase mb-2"
+                    style={{ fontFamily: "var(--font-josefin)" }}
                   >
-                    {status}
-                  </motion.div>
+                    Your Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full bg-transparent border-b-2 border-[#D4AF37]/40 focus:border-[#D4AF37] focus:shadow-[0_4px_10px_rgba(212,175,55,0.15)] outline-none px-1 pb-2 text-[#F2F0E4] placeholder-[#888888]/60 text-sm tracking-wide transition-all duration-300"
+                    style={{ fontFamily: "var(--font-josefin)" }}
+                    placeholder="you@email.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                  />
+                  {errors.email && (
+                    <span id="email-error" className="text-red-400 text-xs mt-1 block" style={{ fontFamily: "var(--font-josefin)" }}>
+                      {errors.email}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Subject */}
+              <div>
+                <label
+                  htmlFor="subject"
+                  className="block text-[#D4AF37] text-[10px] tracking-[0.25em] uppercase mb-2"
+                  style={{ fontFamily: "var(--font-josefin)" }}
+                >
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  className="w-full bg-transparent border-b-2 border-[#D4AF37]/40 focus:border-[#D4AF37] focus:shadow-[0_4px_10px_rgba(212,175,55,0.15)] outline-none px-1 pb-2 text-[#F2F0E4] placeholder-[#888888]/60 text-sm tracking-wide transition-all duration-300"
+                  style={{ fontFamily: "var(--font-josefin)" }}
+                  placeholder="Project Inquiry"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  aria-invalid={!!errors.subject}
+                  aria-describedby={errors.subject ? "subject-error" : undefined}
+                />
+                {errors.subject && (
+                  <span id="subject-error" className="text-red-400 text-xs mt-1 block" style={{ fontFamily: "var(--font-josefin)" }}>
+                    {errors.subject}
+                  </span>
                 )}
-              </form>
-            </div>
+              </div>
+
+              {/* Message */}
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-[#D4AF37] text-[10px] tracking-[0.25em] uppercase mb-2"
+                  style={{ fontFamily: "var(--font-josefin)" }}
+                >
+                  Your Message
+                </label>
+                <textarea
+                  id="message"
+                  rows={5}
+                  className="w-full bg-transparent border-b-2 border-[#D4AF37]/40 focus:border-[#D4AF37] focus:shadow-[0_4px_10px_rgba(212,175,55,0.15)] outline-none px-1 pb-2 text-[#F2F0E4] placeholder-[#888888]/60 text-sm tracking-wide transition-all duration-300 resize-none"
+                  style={{ fontFamily: "var(--font-josefin)" }}
+                  placeholder="Tell me about your project..."
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? "message-error" : undefined}
+                />
+                {errors.message && (
+                  <span id="message-error" className="text-red-400 text-xs mt-1 block" style={{ fontFamily: "var(--font-josefin)" }}>
+                    {errors.message}
+                  </span>
+                )}
+              </div>
+
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="deco-btn-solid flex items-center gap-3 px-10 py-3.5 text-xs tracking-[0.2em] disabled:opacity-60 disabled:cursor-not-allowed"
+                style={{ fontFamily: "var(--font-josefin)" }}
+              >
+                {isLoading ? (
+                  <>
+                    <div
+                      className="w-4 h-4 border-2 border-[#0A0A0A]/40 border-t-[#0A0A0A] animate-spin"
+                      aria-hidden="true"
+                    />
+                    <span>TRANSMITTING...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>SEND MESSAGE</span>
+                    <Send className="w-4 h-4" aria-hidden="true" />
+                  </>
+                )}
+              </button>
+
+              {status && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`p-4 text-center text-sm tracking-wider border ${
+                    status.includes("success")
+                      ? "border-[#D4AF37]/40 text-[#D4AF37] bg-[#D4AF37]/5"
+                      : "border-red-500/40 text-red-400 bg-red-500/5"
+                  }`}
+                  style={{ fontFamily: "var(--font-josefin)" }}
+                  role="status"
+                >
+                  {status}
+                </motion.div>
+              )}
+            </form>
           </motion.div>
         </div>
       </div>

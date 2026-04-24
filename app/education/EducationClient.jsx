@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { BookOpen, Calendar, GraduationCap, Trophy } from "lucide-react";
+
+const romanNumerals = ["I", "II", "III"];
 
 const EducationCard = ({ education, index }) => {
   return (
@@ -8,63 +9,89 @@ const EducationCard = ({ education, index }) => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.2 }}
+      transition={{ duration: 0.5, delay: index * 0.15 }}
       className="relative group"
     >
-      {/* Glow effect */}
-      <div className={`absolute -inset-1 bg-gradient-to-r ${education.gradient} rounded-2xl blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-500`} />
-      
-      {/* Card */}
-      <div className="relative bg-[#0B1120]/80 backdrop-blur-xl border border-white/10 rounded-2xl p-8 hover:border-blue-500/30 transition-all duration-300">
-        {/* Icon */}
-        <div className={`w-16 h-16 rounded-full bg-gradient-to-r ${education.gradient} flex items-center justify-center mb-6 shadow-lg`}>
-          <GraduationCap className="w-8 h-8 text-white" />
-        </div>
+      <div className="relative bg-[#141414] border border-[#D4AF37]/25 p-8 hover:border-[#D4AF37]/80 hover:shadow-[0_0_25px_rgba(212,175,55,0.1)] transition-all duration-500">
+        {/* Corner decorations */}
+        <span className="absolute top-3 left-3 w-5 h-5 border-t border-l border-[#D4AF37]/35 group-hover:border-[#D4AF37] transition-colors duration-500" aria-hidden="true" />
+        <span className="absolute bottom-3 right-3 w-5 h-5 border-b border-r border-[#D4AF37]/35 group-hover:border-[#D4AF37] transition-colors duration-500" aria-hidden="true" />
 
-        {/* Degree */}
-        <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-          {education.degree}
-        </h3>
+        <div className="flex flex-col md:flex-row md:items-start gap-6">
+          {/* Roman numeral diamond */}
+          <div className="relative w-12 h-12 flex-shrink-0">
+            <div
+              className="absolute inset-0 rotate-45 border border-[#D4AF37]/50 group-hover:border-[#D4AF37] group-hover:shadow-[0_0_10px_rgba(212,175,55,0.2)] transition-all duration-500"
+              aria-hidden="true"
+            />
+            <span
+              className="absolute inset-0 flex items-center justify-center text-sm text-[#D4AF37]"
+              style={{ fontFamily: "var(--font-marcellus)" }}
+              aria-label={`Education entry ${romanNumerals[index]}`}
+            >
+              {romanNumerals[index] ?? index + 1}
+            </span>
+          </div>
 
-        {/* School */}
-        <div className="flex items-center gap-2 text-gray-400 mb-4">
-          <BookOpen className="w-4 h-4" />
-          <span className="text-sm">{education.school}</span>
-        </div>
-
-        {/* Year */}
-        <div className="flex items-center gap-2 text-gray-500 mb-6">
-          <Calendar className="w-4 h-4" />
-          <span className="text-sm">{education.year}</span>
-        </div>
-
-        {/* CGPA/GPA */}
-        {education.gpa && (
-          <div className="flex items-center gap-2 mb-6">
-            <div className={`px-4 py-2 rounded-full bg-gradient-to-r ${education.gradient} bg-opacity-10 border border-blue-500/30`}>
-              <div className="flex items-center gap-2">
-                <Trophy className="w-4 h-4 text-yellow-400" />
-                <span className="text-white font-bold">{education.gpa}</span>
+          <div className="flex-1 space-y-3">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h3
+                  className="text-xl text-[#F2F0E4] group-hover:text-[#D4AF37] transition-colors duration-300 uppercase tracking-wider"
+                  style={{ fontFamily: "var(--font-marcellus)" }}
+                >
+                  {education.degree}
+                </h3>
+                <p
+                  className="text-[#888888] text-sm tracking-wider mt-1"
+                  style={{ fontFamily: "var(--font-josefin)" }}
+                >
+                  {education.school}
+                </p>
               </div>
+              {education.gpa && (
+                <div className="flex items-center gap-2 border border-[#D4AF37]/40 px-3 py-1.5 flex-shrink-0">
+                  <span
+                    className="text-[#D4AF37] text-xs font-semibold tracking-wider"
+                    style={{ fontFamily: "var(--font-josefin)" }}
+                  >
+                    {education.gpa}
+                  </span>
+                </div>
+              )}
+            </div>
+
+            {/* Year */}
+            <p
+              className="text-[#888888]/60 text-xs tracking-[0.2em] uppercase"
+              style={{ fontFamily: "var(--font-josefin)" }}
+            >
+              {education.year}
+            </p>
+
+            {/* Gold rule */}
+            <div className="h-px w-10 bg-[#D4AF37] opacity-30" aria-hidden="true" />
+
+            <p
+              className="text-[#888888] text-sm leading-relaxed"
+              style={{ fontFamily: "var(--font-josefin)" }}
+            >
+              {education.description}
+            </p>
+
+            {/* Skills */}
+            <div className="flex flex-wrap gap-2 pt-1">
+              {education.skills.map((skill, i) => (
+                <span
+                  key={i}
+                  className="text-[10px] text-[#888888] border border-[#D4AF37]/15 px-2 py-1 tracking-wider uppercase hover:border-[#D4AF37]/40 hover:text-[#D4AF37] transition-all duration-300"
+                  style={{ fontFamily: "var(--font-josefin)" }}
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </div>
-        )}
-
-        {/* Description */}
-        <p className="text-gray-400 leading-relaxed mb-6">
-          {education.description}
-        </p>
-
-        {/* Skills */}
-        <div className="flex flex-wrap gap-2">
-          {education.skills.map((skill, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 text-xs rounded-full bg-gray-800/50 text-gray-300 border border-gray-700/50 hover:border-blue-500/50 hover:bg-blue-500/10 transition-all"
-            >
-              {skill}
-            </span>
-          ))}
         </div>
       </div>
     </motion.div>
@@ -76,80 +103,85 @@ export default function EducationClient() {
     {
       degree: "B.Sc in Computer Science & Engineering",
       school: "Shahjalal University of Science and Technology",
-      year: "February 2020 - June 2025",
-      gpa: "CGPA: 3.95/4.00",
-      gradient: "from-blue-500 to-cyan-500",
+      year: "February 2020 – June 2025",
+      gpa: "CGPA: 3.95 / 4.00",
       description: "Advanced computer science education with emphasis on practical applications, research methodologies, and cutting-edge technologies.",
-      skills: [
-        "Data Structures & Algorithms",
-        "OOP",
-        "DBMS",
-        "Computer Networking",
-        "Operating Systems",
-        "Web Technologies",
-        "Problem Solving"
-      ]
+      skills: ["Data Structures & Algorithms", "OOP", "DBMS", "Computer Networking", "Operating Systems", "Web Technologies", "Problem Solving"],
     },
     {
       degree: "Higher Secondary Certificate (HSC)",
       school: "Notre Dame College, Dhaka",
-      year: "2017 - 2019",
-      gpa: "GPA: 5.00/5.00",
-      gradient: "from-purple-500 to-pink-500",
+      year: "2017 – 2019",
+      gpa: "GPA: 5.00 / 5.00",
       description: "Strong foundation in science subjects with perfect academic performance, focusing on Mathematics, Physics, and Chemistry.",
-      skills: [
-        "Mathematics",
-        "Physics",
-        "Chemistry",
-        "Biology",
-        "Critical Thinking",
-        "Analytical Skills"
-      ]
+      skills: ["Mathematics", "Physics", "Chemistry", "Biology", "Critical Thinking", "Analytical Skills"],
     },
     {
       degree: "Secondary School Certificate (SSC)",
       school: "Mohammadpur Govt. High School",
-      year: "2013 - 2017",
+      year: "2013 – 2017",
       gpa: null,
-      gradient: "from-green-500 to-emerald-500",
       description: "Fundamental education establishing strong academic foundation and study habits in core subjects.",
-      skills: [
-        "Mathematics",
-        "General Science",
-        "English",
-        "Bangla",
-        "Social Studies"
-      ]
-    }
+      skills: ["Mathematics", "General Science", "English", "Bangla", "Social Studies"],
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-[#04081A] relative py-20 md:py-32 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(50,50,70,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(50,50,70,0.1)_1px,transparent_1px)] bg-[size:40px_40px]" />
-      <div className="absolute top-20 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+    <div id="education" className="min-h-screen bg-[#0A0A0A] relative py-24 md:py-36 overflow-hidden" style={{ scrollMarginTop: "5rem" }}>
+      {/* Background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(45deg, rgba(212,175,55,0.025) 0px, rgba(212,175,55,0.025) 1px, transparent 1px, transparent 14px), repeating-linear-gradient(-45deg, rgba(212,175,55,0.025) 0px, rgba(212,175,55,0.025) 1px, transparent 1px, transparent 14px)",
+        }}
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-40 right-1/4 w-[500px] h-[500px] pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 65%)" }}
+        aria-hidden="true"
+      />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-20 space-y-4"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
-              Academic Journey
-            </span>
+          <div className="flex items-center justify-center gap-4 mb-4" aria-hidden="true">
+            <div className="h-px w-16 bg-[#D4AF37] opacity-50" />
+            <div className="w-2 h-2 rotate-45 bg-[#D4AF37]" />
+            <div className="h-px w-16 bg-[#D4AF37] opacity-50" />
+          </div>
+          <p
+            className="text-[#D4AF37] text-xs tracking-[0.35em] uppercase"
+            style={{ fontFamily: "var(--font-josefin)" }}
+          >
+            Academia
+          </p>
+          <h1
+            className="text-4xl md:text-6xl text-[#F2F0E4] uppercase tracking-widest"
+            style={{ fontFamily: "var(--font-marcellus)" }}
+          >
+            Academic Journey
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p
+            className="text-[#888888] text-base max-w-xl mx-auto tracking-wider"
+            style={{ fontFamily: "var(--font-josefin)" }}
+          >
             Building a strong foundation through continuous learning and academic excellence.
           </p>
+          <div className="flex items-center justify-center gap-4 pt-2" aria-hidden="true">
+            <div className="h-px w-16 bg-[#D4AF37] opacity-50" />
+            <div className="w-1 h-1 rotate-45 border border-[#D4AF37]" />
+            <div className="h-px w-16 bg-[#D4AF37] opacity-50" />
+          </div>
         </motion.div>
 
-        {/* Education Cards */}
-        <div className="max-w-5xl mx-auto space-y-8">
+        <div className="max-w-4xl mx-auto space-y-8">
           {educationData.map((edu, index) => (
             <EducationCard key={index} education={edu} index={index} />
           ))}
@@ -158,3 +190,4 @@ export default function EducationClient() {
     </div>
   );
 }
+
