@@ -8,19 +8,19 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { name: "Home",       href: "/" },
-    { name: "Projects",   href: "/projects" },
+    { name: "Home", href: "/" },
+    { name: "Projects", href: "/projects" },
     { name: "Experience", href: "/experience" },
-    { name: "Skills",     href: "/skills" },
-    { name: "Education",  href: "/education" },
-    { name: "Contact",    href: "/contact" },
+    { name: "Skills", href: "/skills" },
+    { name: "Education", href: "/education" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const socialLinks = [
-    { name: "GitHub",   href: "https://github.com/Tahmid-kabir-addin",                  icon: FaGithub },
-    { name: "LinkedIn", href: "https://www.linkedin.com/in/tahmid-kabir-addin/",         icon: FaLinkedin },
-    { name: "Email",    href: "mailto:tahmidkabiraddin@gmail.com",                       icon: FaEnvelope },
-    { name: "LeetCode", href: "https://leetcode.com/u/tahmidkabiraddin/",               icon: SiLeetcode },
+    { name: "GitHub", href: "https://github.com/Tahmid-kabir-addin", icon: FaGithub },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/tahmid-kabir-44b4671b1/", icon: FaLinkedin },
+    { name: "Email", href: "mailto:tahmidkabiraddin@gmail.com", icon: FaEnvelope },
+    { name: "LeetCode", href: "https://leetcode.com/u/tahmidkabiraddin/", icon: SiLeetcode },
   ];
 
   return (
